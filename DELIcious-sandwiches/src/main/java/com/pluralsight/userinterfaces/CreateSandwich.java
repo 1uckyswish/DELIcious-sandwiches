@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CreateSandwich {
-    private Scanner scanner;
+    private static Scanner scanner;
     private List<String> meatToppings = loadMeatToppings();
     private List<String> cheeseToppings = loadCheeseToppings();
     private List<String> regularToppings = loadRegularToppings();
@@ -44,18 +44,214 @@ public class CreateSandwich {
         sandwichSize = (sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12");
 
         System.out.print("Would you like the bread toasted? (Y/N): ");
-        String toastChoice = UtilityMethods.takeBreadToastedInput(scanner, scanner.nextLine().trim(), "Would you like the bread toasted? (Y/N): ");
+        String toastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like the bread toasted? (Y/N): ");
         isToasted = (toastChoice.equalsIgnoreCase("Y") ? true : false);
         //Make new object to access methods
-        sandwich = new Sandwich(sizeChoice, breadChoice, isToasted);
+        sandwich = new Sandwich(sandwichSize, sandwichBread, isToasted);
+        sandwich.setSizePrice((sandwichSize.equals("4") ? 5.50 : sandwichSize.equals("8") ? 7.00 : 8.50));
+        setMeatToppingsAndBooleanValue(sandwich);
+        setCheeseToppingsAndBooleanValue(sandwich);
+        setRegularToppings(sandwich);
+        setSaucesToppings(sandwich);
+        System.out.print("Would you like a au jus sauce side? ");
+        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like a au jus sauce side? ");
+        if (sideChoice.equalsIgnoreCase("Y")){
+            sandwich.addRegularTopping("4oz Au Jus sauce");
+        }
 
-        return "hello";
+        sandwich.setPrice(sandwich.calculateTotalPrice());
+        return sandwich.toString();
+    }
+
+
+    private void setMeatToppingsAndBooleanValue(Sandwich sandwich) {
+        List<String> selectedMeats = new ArrayList<>();
+        boolean addMoreMeat = false; // Initialize addMoreMeat
+        boolean meatSelected = false; // Track if meat is selected
+
+        System.out.print("Would you like meat? (Y/N): ");
+        String meatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like meat? (Y/N): ");
+
+        if (meatChoice.equalsIgnoreCase("Y")) {
+            sandwich.setHasMeat(true);
+            sandwich.setMeatPrice(sandwich.getSize().equals("4") ? 1.00 : sandwich.getSize().equals("8") ? 2.00 : 3.00);
+            meatSelected = true;
+
+            // Loop for selecting meat
+            do {
+                String selectedMeat = UtilityMethods.validateMeatChoice(scanner, meatToppings);
+                selectedMeats.add(selectedMeat);
+
+                System.out.print("Would you like more meat (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more meat (Y/N): ");
+                addMoreMeat = repeatChoice.equalsIgnoreCase("Y");
+                if (addMoreMeat == true){
+                    sandwich.setExtraMeat(true);
+                }else{
+                    sandwich.setExtraMeat(false);
+                }
+
+            } while (addMoreMeat); // Continue looping if user wants more meat
+        }
+        // Add selected meats to the sandwich if meat is selected
+        if (meatSelected) {
+            for (String meat : selectedMeats) {
+                sandwich.addPremiumTopping(meat);
+            }
+
+            // Calculate total cost of extra meat
+            int extraMeatCount = selectedMeats.size() - 1; // Exclude the first meat, which is included in the base price
+            double extraMeatCost = 0.0;
+            switch (sandwich.getSize()) {
+                case "4":
+                    extraMeatCost = 0.50 * extraMeatCount;
+                    break;
+                case "8":
+                    extraMeatCost = 1.00 * extraMeatCount;
+                    break;
+                case "12":
+                    extraMeatCost = 1.50 * extraMeatCount;
+                    break;
+                default:
+                    break;
+            }
+
+            if(selectedMeats.size() > 1){
+                sandwich.setExtraMeat(true);
+            }
+            // Update the total cost of the sandwich
+            sandwich.setExtraMeatPrice(extraMeatCost);
+        }
+
+    }
+
+    private void setCheeseToppingsAndBooleanValue(Sandwich sandwich) {
+        List<String> selectedCheeses = new ArrayList<>();
+        boolean addMoreCheese = false; // Initialize addMoreCheese
+        boolean cheeseSelected = false; // Track if cheese is selected
+
+        System.out.print("Would you like Cheese? (Y/N): ");
+        String cheeseChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like meat? (Y/N): ");
+
+        if (cheeseChoice.equalsIgnoreCase("Y")) {
+            sandwich.setHasCheese(true);
+            sandwich.setCheesePrice(sandwich.getSize().equals("4") ? 0.75 : sandwich.getSize().equals("8") ? 1.50 : 2.25);
+            cheeseSelected = true;
+
+            // Loop for selecting meat
+            do {
+                String selectedMeat = UtilityMethods.validateCheeseChoice(scanner, cheeseToppings);
+                selectedCheeses.add(selectedMeat);
+
+                System.out.print("Would you like more cheese (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more cheese (Y/N): ");
+                addMoreCheese = repeatChoice.equalsIgnoreCase("Y");
+
+
+            } while (addMoreCheese); // Continue looping if user wants more meat
+        }
+        // Add selected meats to the sandwich if meat is selected
+        if (cheeseSelected) {
+            for (String cheese : selectedCheeses) {
+                sandwich.addPremiumTopping(cheese);
+            }
+
+            // Calculate total cost of extra meat
+            int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first meat, which is included in the base price
+            double extraCheeseCost = 0.0;
+            switch (sandwich.getSize()) {
+                case "4":
+                    extraCheeseCost = 0.30 * extraCheeseCount;
+                    break;
+                case "8":
+                    extraCheeseCost = 0.60 * extraCheeseCount;
+                    break;
+                case "12":
+                    extraCheeseCost = 0.90 * extraCheeseCount;
+                    break;
+                default:
+                    break;
+            }
+
+            if(selectedCheeses.size() > 1){
+                sandwich.setExtraCheese(true);
+            }
+
+            // Update the total cost of the sandwich
+            sandwich.setExtraCheesePrice(extraCheeseCost);
+        }
+
+    }
+
+
+    private void setRegularToppings(Sandwich sandwich){
+        List<String> selectedRegularToppings = new ArrayList<>();
+        boolean addMoreToppings = false;
+        boolean toppingsSelected = false;
+
+        System.out.print("Would you like toppings? (Y/N): ");
+        String toppingsChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like toppings? (Y/N): ");
+
+        if (toppingsChoice.equalsIgnoreCase("Y")) {
+            toppingsSelected = true;
+
+            // Loop for selecting meat
+            do {
+                String selectedToppings = UtilityMethods.validateToppingsChoice(scanner, regularToppings);
+                selectedRegularToppings.add(selectedToppings);
+
+                System.out.print("Would you like more toppings (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more toppings (Y/N): ");
+                addMoreToppings = repeatChoice.equalsIgnoreCase("Y");
+
+
+            } while (addMoreToppings); // Continue looping if user wants more toppings
+        }
+
+        // Add selected meats to the sandwich if meat is selected
+        if (toppingsSelected) {
+            for (String topping : selectedRegularToppings) {
+                sandwich.addRegularTopping(topping);
+            }
+        }
+    }
+
+
+    private void setSaucesToppings(Sandwich sandwich){
+        List<String> selectedSauceToppings = new ArrayList<>();
+        boolean addMoreSauces = false;
+        boolean saucesSelected = false;
+
+        System.out.print("Would you like sauce added? (Y/N): ");
+        String sauceChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like sauce added? (Y/N): ");
+
+        if (sauceChoice.equalsIgnoreCase("Y")) {
+            saucesSelected = true;
+
+            // Loop for selecting meat
+            do {
+                String selectedSauces = UtilityMethods.validateToppingsChoice(scanner, sauceOptions);
+                selectedSauceToppings.add(selectedSauces);
+
+                System.out.print("Would you like more sauces added (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more sauces added (Y/N): ");
+                addMoreSauces = repeatChoice.equalsIgnoreCase("Y");
+
+
+            } while (addMoreSauces); // Continue looping if user wants more toppings
+        }
+
+        // Add selected meats to the sandwich if meat is selected
+        if (saucesSelected) {
+            for (String sauce : selectedSauceToppings) {
+                sandwich.addRegularTopping(sauce);
+            }
+        }
     }
 
 
 
-
-    private static List<String> loadMeatToppings() {
+    private List<String> loadMeatToppings() {
         List<String> meatToppings = new ArrayList<>();
         meatToppings.add("Steak");
         meatToppings.add("Ham");
@@ -66,7 +262,7 @@ public class CreateSandwich {
         return meatToppings;
     }
 
-    private static List<String> loadCheeseToppings() {
+    private List<String> loadCheeseToppings() {
         List<String> cheeseToppings = new ArrayList<>();
         cheeseToppings.add("American");
         cheeseToppings.add("Provolone");
@@ -75,7 +271,7 @@ public class CreateSandwich {
         return cheeseToppings;
     }
 
-    private static List<String> loadRegularToppings() {
+    private List<String> loadRegularToppings() {
         List<String> regularToppings = new ArrayList<>();
         regularToppings.add("Lettuce");
         regularToppings.add("Peppers");
@@ -90,7 +286,7 @@ public class CreateSandwich {
     }
 
 
-    private static List<String> loadSauceToppings() {
+    private List<String> loadSauceToppings() {
         List<String> sauceToppings = new ArrayList<>();
         sauceToppings.add("Mayo");
         sauceToppings.add("Mustard");

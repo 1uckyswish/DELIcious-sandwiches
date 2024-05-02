@@ -144,6 +144,17 @@ public class Sandwich extends Order{
         premiumToppings.add(topping);
     }
 
+    public double calculateTotalPrice() {
+        double totalPrice = sizePrice + meatPrice + cheesePrice;
+        if (extraMeat) {
+            totalPrice += extraMeatPrice;
+        }
+        if (extraCheese) {
+            totalPrice += extraCheesePrice;
+        }
+        return totalPrice;
+    }
+
 
     @Override
     public String toString() {

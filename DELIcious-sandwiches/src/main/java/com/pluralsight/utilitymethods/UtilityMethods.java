@@ -1,4 +1,5 @@
 package com.pluralsight.utilitymethods;
+import java.util.List;
 import java.util.Scanner;
 
 public class UtilityMethods {
@@ -23,13 +24,74 @@ public class UtilityMethods {
         return value;
     }
 
-    public static String takeBreadToastedInput(Scanner scanner, String value, String prompt) {
+
+    public static String takeYesOrNoInput(Scanner scanner, String value, String prompt) {
         while (!value.equalsIgnoreCase("Y") && !value.equalsIgnoreCase("N")) {
             System.out.println("Sorry, please enter either (Y/N): ");
-            // After invalid input, read the next integer value
+            // After invalid input, read the next value
             System.out.print(prompt);
             value = scanner.nextLine().trim();
         }
         return value;
+    }
+
+
+    public static String validateMeatChoice(Scanner scanner, List<String> meatOptions) {
+        while (true) {
+            System.out.println("Choose One Meat To add ");
+            for (String meat : meatOptions) {
+                System.out.println(meat);
+            }
+            System.out.print("Enter your choice: ");
+            String selectedMeat = scanner.nextLine().trim();
+
+            for (String meat : meatOptions) {
+                if (selectedMeat.equalsIgnoreCase(meat)) {
+                    return selectedMeat; // Input matches one of the meat options
+                }
+            }
+
+            System.out.println("Invalid meat choice. Please choose one of the available options.");
+        }
+    }
+
+
+    public static String validateCheeseChoice(Scanner scanner, List<String> meatOptions) {
+        while (true) {
+            System.out.println("Choose One Cheese To add ");
+            for (String meat : meatOptions) {
+                System.out.println(meat);
+            }
+            System.out.print("Enter your choice: ");
+            String selectedMeat = scanner.nextLine().trim();
+
+            for (String meat : meatOptions) {
+                if (selectedMeat.equalsIgnoreCase(meat)) {
+                    return selectedMeat; // Input matches one of the meat options
+                }
+            }
+
+            System.out.println("Invalid Cheese choice. Please choose one of the available options.");
+        }
+    }
+
+
+    public static String validateToppingsChoice(Scanner scanner, List<String> meatOptions) {
+        while (true) {
+            System.out.println("Choose One Topping To add ");
+            for (String meat : meatOptions) {
+                System.out.println(meat);
+            }
+            System.out.print("Enter your choice: ");
+            String selectedMeat = scanner.nextLine().trim();
+
+            for (String meat : meatOptions) {
+                if (selectedMeat.equalsIgnoreCase(meat)) {
+                    return selectedMeat; // Input matches one of the meat options
+                }
+            }
+
+            System.out.println("Invalid Topping choice. Please choose one of the available options.");
+        }
     }
 }
