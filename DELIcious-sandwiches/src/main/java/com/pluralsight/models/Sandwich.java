@@ -155,25 +155,62 @@ public class Sandwich extends Order{
         return totalPrice;
     }
 
-
     @Override
     public String toString() {
-        return "Sandwich{" +
-                "toasted=" + toasted +
-                ", sizePrice=" + sizePrice +
-                ", meatPrice=" + meatPrice +
-                ", cheesePrice=" + cheesePrice +
-                ", extraMeat=" + extraMeat +
-                ", extraMeatPrice=" + extraMeatPrice +
-                ", extraCheese=" + extraCheese +
-                ", extraCheesePrice=" + extraCheesePrice +
-                ", hasMeat=" + hasMeat +
-                ", hasCheese=" + hasCheese +
-                ", regularToppings=" + regularToppings +
-                ", premiumToppings=" + premiumToppings +
-                ", size='" + size + '\'' +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("|+--------------------------------------+\n");
+        sb.append("|        Sandwich Order Summary         |\n");
+        sb.append("|+--------------------------------------+\n");
+        sb.append("|Bread Type: ").append(type).append("\n");
+        sb.append("|Bread Size: ").append(size).append(" inch\n");
+        sb.append("|Toasted: ").append(toasted ? "Yes" : "No").append("\n");
+
+        if (!regularToppings.isEmpty()) {
+            sb.append("|Regular Toppings:\n");
+            for (String topping : regularToppings) {
+                if (!topping.equals("4oz Au Jus sauce")) {
+                    sb.append("|- ").append(capitalizeFirstLetter(topping)).append("\n");
+                }
+            }
+        }
+
+        if (!premiumToppings.isEmpty()) {
+            sb.append("|Premium Toppings:\n");
+            for (String topping : premiumToppings) {
+                sb.append("|- ").append(capitalizeFirstLetter(topping)).append("\n");
+            }
+        }
+
+        sb.append("|Toppings cost:\n");
+        if (hasMeat) {
+            sb.append("|- Meat price: $").append(String.format("%.2f", meatPrice)).append("\n");
+            if (extraMeat) {
+                sb.append("|  - Extra Meat Cost: $").append(String.format("%.2f", extraMeatPrice)).append("\n");
+            }
+        }
+        if (hasCheese) {
+            sb.append("|- Cheese price: $").append(String.format("%.2f", cheesePrice)).append("\n");
+            if (extraCheese) {
+                sb.append("|  - Extra Cheese Cost: $").append(String.format("%.2f", extraCheesePrice)).append("\n");
+            }
+        }
+
+        if (regularToppings.contains("4oz Au Jus sauce")) {
+            sb.append("|Sides: 4oz Au Jus sauce\n");
+        }
+
+        sb.append("|Total Price: $").append(String.format("%.2f", price)).append("\n");
+        sb.append("|+--------------------------------------+\n");
+
+        return sb.toString();
     }
+
+    private String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+
 }

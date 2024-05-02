@@ -20,13 +20,17 @@ public class OrderScreen {
 
     public boolean run() {
         while (true) {
-            System.out.println("ORDER SCREEN");
-            System.out.println("1) Would you like a Sandwich?");
-            System.out.println("2) Would you like a drink?");
-            System.out.println("3) Would you like a bag of chips?");
-            System.out.println("4) Checkout");
-            System.out.println("5) Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("\n+--------------------------------------+");
+            System.out.println("|             ORDER SCREEN             |");
+            System.out.println("+--------------------------------------+");
+            System.out.println("| 1) Would you like a Sandwich?       |");
+            System.out.println("| 2) Would you like a drink?          |");
+            System.out.println("| 3) Would you like a bag of chips?   |");
+            System.out.println("| 4) Checkout                         |");
+            System.out.println("| 5) Exit                             |");
+//            System.out.println("+--------------------------------------+");
+            System.out.print("\nEnter your choice: ");
+
             String orderChoice = scanner.nextLine().trim().toLowerCase();
 
             switch (orderChoice) {

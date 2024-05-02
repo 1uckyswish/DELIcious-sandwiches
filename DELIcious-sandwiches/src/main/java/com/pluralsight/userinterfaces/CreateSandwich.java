@@ -22,10 +22,12 @@ public class CreateSandwich {
         String sandwichSize;
         String sandwichBread;
         boolean isToasted;
-        System.out.println("Creating a new sandwich:");
+        System.out.println("\n======================================");
+        System.out.println("|       Creating a New Sandwich     |");
+        System.out.println("======================================\n");
 
-        // Sandwich bread
-        System.out.println("Select your bread:");
+// Sandwich bread
+        System.out.println("Select your bread type:");
         System.out.println("1) White");
         System.out.println("2) Wheat");
         System.out.println("3) Rye");
@@ -33,9 +35,8 @@ public class CreateSandwich {
         System.out.print("Enter your choice (1, 2, 3, 4): ");
         String breadChoice = UtilityMethods.takeBreadTypeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3, 4): ");
         sandwichBread = (breadChoice.equals("1") ? "White" : breadChoice.equals("2") ? "Wheat" : breadChoice.equals("3") ? "Rye" : "Wrap");
-        // Sandwich size
-        System.out.println("What size sandwich would you like?");
-        System.out.println("Sandwich size:");
+// Sandwich size
+        System.out.println("\nWhat size sandwich would you like?");
         System.out.println("1) 4-inch");
         System.out.println("2) 8-inch");
         System.out.println("3) 12-inch");
@@ -43,24 +44,27 @@ public class CreateSandwich {
         String sizeChoice = UtilityMethods.takeBreadSizeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3): ");
         sandwichSize = (sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12");
 
-        System.out.print("Would you like the bread toasted? (Y/N): ");
-        String toastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like the bread toasted? (Y/N): ");
+        System.out.print("\nWould you like your sandwich toasted? (Y/N): ");
+        String toastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like your sandwich toasted? (Y/N): ");
         isToasted = (toastChoice.equalsIgnoreCase("Y") ? true : false);
-        //Make new object to access methods
+
+//Make new object to access methods
         sandwich = new Sandwich(sandwichSize, sandwichBread, isToasted);
         sandwich.setSizePrice((sandwichSize.equals("4") ? 5.50 : sandwichSize.equals("8") ? 7.00 : 8.50));
         setMeatToppingsAndBooleanValue(sandwich);
         setCheeseToppingsAndBooleanValue(sandwich);
         setRegularToppings(sandwich);
         setSaucesToppings(sandwich);
-        System.out.print("Would you like a au jus sauce side? ");
-        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like a au jus sauce side? ");
+
+        System.out.print("Would you like a side of 4oz Au Jus Sauce? (Y/N): ");
+        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like a side of 4oz Au Jus Sauce? (Y/N): ");
         if (sideChoice.equalsIgnoreCase("Y")){
             sandwich.addRegularTopping("4oz Au Jus sauce");
         }
 
         sandwich.setPrice(sandwich.calculateTotalPrice());
         return sandwich.toString();
+
     }
 
 
@@ -69,8 +73,8 @@ public class CreateSandwich {
         boolean addMoreMeat = false; // Initialize addMoreMeat
         boolean meatSelected = false; // Track if meat is selected
 
-        System.out.print("Would you like meat? (Y/N): ");
-        String meatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like meat? (Y/N): ");
+        System.out.print("\nWould you like meat in your sandwich? (Y/N): ");
+        String meatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like meat in your sandwich? (Y/N): ");
 
         if (meatChoice.equalsIgnoreCase("Y")) {
             sandwich.setHasMeat(true);
@@ -82,8 +86,8 @@ public class CreateSandwich {
                 String selectedMeat = UtilityMethods.validateMeatChoice(scanner, meatToppings);
                 selectedMeats.add(selectedMeat);
 
-                System.out.print("Would you like more meat (Y/N): ");
-                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more meat (Y/N): ");
+                System.out.print("\nWould you like more meat on your sandwich? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more meat on your sandwich? (Y/N): ");
                 addMoreMeat = repeatChoice.equalsIgnoreCase("Y");
                 if (addMoreMeat == true){
                     sandwich.setExtraMeat(true);
@@ -130,8 +134,8 @@ public class CreateSandwich {
         boolean addMoreCheese = false; // Initialize addMoreCheese
         boolean cheeseSelected = false; // Track if cheese is selected
 
-        System.out.print("Would you like Cheese? (Y/N): ");
-        String cheeseChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like meat? (Y/N): ");
+        System.out.print("\nWould you like cheese in your sandwich? (Y/N): ");
+        String cheeseChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like cheese in your sandwich? (Y/N): ");
 
         if (cheeseChoice.equalsIgnoreCase("Y")) {
             sandwich.setHasCheese(true);
@@ -143,8 +147,8 @@ public class CreateSandwich {
                 String selectedMeat = UtilityMethods.validateCheeseChoice(scanner, cheeseToppings);
                 selectedCheeses.add(selectedMeat);
 
-                System.out.print("Would you like more cheese (Y/N): ");
-                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more cheese (Y/N): ");
+                System.out.print("\nWould you like more cheese on your sandwich? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like more cheese on your sandwich? (Y/N): ");
                 addMoreCheese = repeatChoice.equalsIgnoreCase("Y");
 
 
@@ -189,8 +193,8 @@ public class CreateSandwich {
         boolean addMoreToppings = false;
         boolean toppingsSelected = false;
 
-        System.out.print("Would you like toppings? (Y/N): ");
-        String toppingsChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like toppings? (Y/N): ");
+        System.out.print("\nWould you like veggie toppings in your sandwich? (Y/N): ");
+        String toppingsChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like veggie toppings in your sandwich? (Y/N): ");
 
         if (toppingsChoice.equalsIgnoreCase("Y")) {
             toppingsSelected = true;
@@ -200,8 +204,8 @@ public class CreateSandwich {
                 String selectedToppings = UtilityMethods.validateToppingsChoice(scanner, regularToppings);
                 selectedRegularToppings.add(selectedToppings);
 
-                System.out.print("Would you like more toppings (Y/N): ");
-                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more toppings (Y/N): ");
+                System.out.print("\nWould you like additional veggie toppings? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like additional veggie toppings? (Y/N): ");
                 addMoreToppings = repeatChoice.equalsIgnoreCase("Y");
 
 
@@ -222,8 +226,8 @@ public class CreateSandwich {
         boolean addMoreSauces = false;
         boolean saucesSelected = false;
 
-        System.out.print("Would you like sauce added? (Y/N): ");
-        String sauceChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like sauce added? (Y/N): ");
+        System.out.print("\nWould you like sauce added to your sandwich? (Y/N): ");
+        String sauceChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like sauce added to your sandwich? (Y/N): ");
 
         if (sauceChoice.equalsIgnoreCase("Y")) {
             saucesSelected = true;
@@ -233,8 +237,8 @@ public class CreateSandwich {
                 String selectedSauces = UtilityMethods.validateToppingsChoice(scanner, sauceOptions);
                 selectedSauceToppings.add(selectedSauces);
 
-                System.out.print("Would you like more sauces added (Y/N): ");
-                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more sauces added (Y/N): ");
+                System.out.print("\nWould you like additional sauces added? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like additional sauces added? (Y/N): ");
                 addMoreSauces = repeatChoice.equalsIgnoreCase("Y");
 
 
@@ -253,48 +257,52 @@ public class CreateSandwich {
 
     private List<String> loadMeatToppings() {
         List<String> meatToppings = new ArrayList<>();
-        meatToppings.add("Steak");
-        meatToppings.add("Ham");
-        meatToppings.add("Salami");
         meatToppings.add("Roast Beef");
         meatToppings.add("Chicken");
+        meatToppings.add("Salami");
+        meatToppings.add("Steak");
         meatToppings.add("Bacon");
+        meatToppings.add("Ham");
         return meatToppings;
     }
 
+
     private List<String> loadCheeseToppings() {
         List<String> cheeseToppings = new ArrayList<>();
-        cheeseToppings.add("American");
         cheeseToppings.add("Provolone");
+        cheeseToppings.add("American");
         cheeseToppings.add("Cheddar");
         cheeseToppings.add("Swiss");
         return cheeseToppings;
     }
 
+
     private List<String> loadRegularToppings() {
         List<String> regularToppings = new ArrayList<>();
-        regularToppings.add("Lettuce");
-        regularToppings.add("Peppers");
-        regularToppings.add("Onions");
-        regularToppings.add("Tomatoes");
         regularToppings.add("Jalepenos");
-        regularToppings.add("Cucumbers");
-        regularToppings.add("Pickles");
         regularToppings.add("Guacamole");
+        regularToppings.add("Cucumbers");
         regularToppings.add("Mushrooms");
+        regularToppings.add("Tomatoes");
+        regularToppings.add("Peppers");
+        regularToppings.add("Lettuce");
+        regularToppings.add("Pickles");
+        regularToppings.add("Onions");
         return regularToppings;
     }
 
 
+
     private List<String> loadSauceToppings() {
         List<String> sauceToppings = new ArrayList<>();
-        sauceToppings.add("Mayo");
+        sauceToppings.add("Thousand Island");
+        sauceToppings.add("Vinaigrette");
         sauceToppings.add("Mustard");
         sauceToppings.add("Ketchup");
         sauceToppings.add("Ranch");
-        sauceToppings.add("Thousand Island");
-        sauceToppings.add("Vinaigrette");
+        sauceToppings.add("Mayo");
         return sauceToppings;
     }
+
 }
 

@@ -40,8 +40,11 @@ public class UtilityMethods {
         while (true) {
             System.out.println("Choose One Meat To add ");
             for (String meat : meatOptions) {
-                System.out.println(meat);
+                System.out.println("❥ " + meat);
             }
+
+
+
             System.out.print("Enter your choice: ");
             String selectedMeat = scanner.nextLine().trim();
 
@@ -56,18 +59,19 @@ public class UtilityMethods {
     }
 
 
-    public static String validateCheeseChoice(Scanner scanner, List<String> meatOptions) {
+    public static String validateCheeseChoice(Scanner scanner, List<String> cheeseOptions) {
         while (true) {
             System.out.println("Choose One Cheese To add ");
-            for (String meat : meatOptions) {
-                System.out.println(meat);
+            for (String cheese : cheeseOptions) {
+                System.out.println("❥ " + cheese);
             }
-            System.out.print("Enter your choice: ");
-            String selectedMeat = scanner.nextLine().trim();
 
-            for (String meat : meatOptions) {
-                if (selectedMeat.equalsIgnoreCase(meat)) {
-                    return selectedMeat; // Input matches one of the meat options
+            System.out.print("Enter your choice: ");
+            String selectedCheese = scanner.nextLine().trim();
+
+            for (String cheese : cheeseOptions) {
+                if (selectedCheese.equalsIgnoreCase(cheese)) {
+                    return selectedCheese; // Input matches one of the meat options
                 }
             }
 
@@ -76,18 +80,18 @@ public class UtilityMethods {
     }
 
 
-    public static String validateToppingsChoice(Scanner scanner, List<String> meatOptions) {
+    public static String validateToppingsChoice(Scanner scanner, List<String> toppingOptions) {
         while (true) {
             System.out.println("Choose One Topping To add ");
-            for (String meat : meatOptions) {
-                System.out.println(meat);
+            for (String topping : toppingOptions) {
+                System.out.println("❥ " + topping);
             }
             System.out.print("Enter your choice: ");
-            String selectedMeat = scanner.nextLine().trim();
+            String selectedTopping = scanner.nextLine().trim();
 
-            for (String meat : meatOptions) {
-                if (selectedMeat.equalsIgnoreCase(meat)) {
-                    return selectedMeat; // Input matches one of the meat options
+            for (String topping : toppingOptions) {
+                if (selectedTopping.equalsIgnoreCase(topping)) {
+                    return selectedTopping; // Input matches one of the meat options
                 }
             }
 
