@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import com.pluralsight.userInterfaces.OrderScreen;
+import com.pluralsight.userinterfaces.OrderScreen;
 
 import java.util.Scanner;
 

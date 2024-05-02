@@ -1,6 +1,4 @@
-package com.pluralsight.userInterfaces;
-
-import com.pluralsight.HomeScreen;
+package com.pluralsight.userinterfaces;
 
 import java.util.ArrayList;
 import java.util.List;

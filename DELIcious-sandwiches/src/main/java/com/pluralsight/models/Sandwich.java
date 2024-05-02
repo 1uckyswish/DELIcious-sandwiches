@@ -143,4 +143,26 @@ public class Sandwich extends Order{
     public void addPremiumTopping(String topping) {
         premiumToppings.add(topping);
     }
+
+
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "toasted=" + toasted +
+                ", sizePrice=" + sizePrice +
+                ", meatPrice=" + meatPrice +
+                ", cheesePrice=" + cheesePrice +
+                ", extraMeat=" + extraMeat +
+                ", extraMeatPrice=" + extraMeatPrice +
+                ", extraCheese=" + extraCheese +
+                ", extraCheesePrice=" + extraCheesePrice +
+                ", hasMeat=" + hasMeat +
+                ", hasCheese=" + hasCheese +
+                ", regularToppings=" + regularToppings +
+                ", premiumToppings=" + premiumToppings +
+                ", size='" + size + '\'' +
+                ", type='" + type + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
