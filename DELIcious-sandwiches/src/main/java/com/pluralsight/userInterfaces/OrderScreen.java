@@ -48,6 +48,7 @@ public class OrderScreen {
                     System.out.println(sandwichCart);
                     break;
                 case "5":
+                    exitBackHome();
                     System.out.println("Exiting...");
                     return false; // Exit the method and indicate that the user chose to exit
                 default:
@@ -79,5 +80,25 @@ public class OrderScreen {
     private void checkoutCart() {
         // Implement checkout logic
     }
+
+    private void exitBackHome() {
+        if (sandwichCart.size() > 0 || drinkCart.size() > 0 || chipCart.size() > 0) {
+            while (true) {
+                System.out.println("Before heading home, are you certain you want to proceed?");
+                System.out.println("Please note that doing so will clear all items from your cart.");
+                System.out.print("Confirm with 'Yes' or 'No': ");
+                String userChoice = scanner.nextLine().trim();
+                if (userChoice.equalsIgnoreCase("yes")) {
+                    return;
+                } else if (userChoice.equalsIgnoreCase("no")) {
+                        run();
+                    return;
+                } else {
+                    System.out.println("Invalid choice. Please enter 'Yes' or 'No'.");
+                }
+            }
+        }
+    }
+
 
 }
