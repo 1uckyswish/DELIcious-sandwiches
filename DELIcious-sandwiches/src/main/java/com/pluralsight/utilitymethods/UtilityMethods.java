@@ -99,3 +99,7 @@ public class UtilityMethods {
         }
     }
 }
+
+
+//reference for signs
+//https://www.compart.com/en/unicode

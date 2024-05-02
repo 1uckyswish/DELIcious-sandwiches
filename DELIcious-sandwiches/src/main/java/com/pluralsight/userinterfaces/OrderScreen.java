@@ -86,8 +86,8 @@ public class OrderScreen {
     private void exitBackHome() {
         if (sandwichCart.size() > 0 || drinkCart.size() > 0 || chipCart.size() > 0) {
             while (true) {
-                System.out.println("Before heading home, are you certain you want to proceed?");
-                System.out.println("Please note that doing so will clear all items from your cart.");
+                System.out.println("\nBefore proceeding, would you like to confirm your choices?");
+                System.out.println("Please note that this action will clear all items from your cart.");
                 System.out.print("Confirm with 'Yes' or 'No': ");
                 String userChoice = scanner.nextLine().trim();
                 if (userChoice.equalsIgnoreCase("yes")) {
