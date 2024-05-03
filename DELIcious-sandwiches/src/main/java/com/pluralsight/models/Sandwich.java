@@ -163,6 +163,7 @@ public class Sandwich extends Order{
         sb.append("|+--------------------------------------+\n");
         sb.append("|Bread Type: ").append(type).append("\n");
         sb.append("|Bread Size: ").append(size).append(" inch\n");
+        sb.append("|Base Price: $").append(String.format("%.2f", sizePrice)).append("\n");
         sb.append("|Toasted: ").append(toasted ? "Yes" : "No").append("\n");
 
         if (!regularToppings.isEmpty()) {

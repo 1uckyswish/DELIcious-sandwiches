@@ -48,6 +48,7 @@ public class OrderScreen {
                     break;
                 case "6":
                     System.out.println(sandwichCart);
+                    System.out.println(drinkCart);
                     break;
                 case "5":
                     exitBackHome();
@@ -64,15 +65,18 @@ public class OrderScreen {
         CreateSandwich sandwichCreator = new CreateSandwich(scanner);
 
         // Call createSandwich method to create a sandwich
-        String newSandwich;
-        newSandwich = sandwichCreator.createSandwich();
-
+        String newSandwich = sandwichCreator.createSandwich();
         // Add the created sandwich to sandwichCart
         sandwichCart.add(newSandwich);
     }
 
     private void createDrink() {
         // Implement drink creation logic
+        CreateDrink drinkCreator = new CreateDrink(scanner);
+
+        String newDrink = drinkCreator.createDrink();
+
+        drinkCart.add(newDrink);
     }
 
     private void createChips() {

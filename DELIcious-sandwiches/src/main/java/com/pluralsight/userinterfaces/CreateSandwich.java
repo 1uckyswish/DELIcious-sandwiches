@@ -41,7 +41,7 @@ public class CreateSandwich {
         System.out.println("2) 8-inch");
         System.out.println("3) 12-inch");
         System.out.print("Enter your choice (1, 2, 3): ");
-        String sizeChoice = UtilityMethods.takeBreadSizeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3): ");
+        String sizeChoice = UtilityMethods.takeSizeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3): ");
         sandwichSize = (sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12");
 
         System.out.print("\nWould you like your sandwich toasted? (Y/N): ");
