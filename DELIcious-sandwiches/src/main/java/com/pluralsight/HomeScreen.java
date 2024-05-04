@@ -9,13 +9,14 @@ public class HomeScreen {
         Scanner scanner = new Scanner(System.in);
         System.out.println("------------------------------------------------------");
         System.out.println("\t\t\t\t\tWelcome to");
-        System.out.println("\t\t\t  DELI-CIOUS sandwiches");
-        System.out.println("\t\t - Your Ultimate sandwich shop! - \t");
+        System.out.println("\t\t\t🥪 DELI-CIOUS sandwiches 🥪");
+        System.out.println("\t\t  - Your Ultimate sandwich shop! - \t");
         System.out.println("------------------------------------------------------");
+
         while(true){
-            System.out.println("---Home screen---");
-            System.out.println("1) New Order");
-            System.out.println("0) Exit");
+            System.out.println("--- Home screen ---");
+            System.out.println("1️⃣ - New Order🧾");
+            System.out.println("2️⃣ - Exit👋🏻");
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine();
             switch (choice){
@@ -23,7 +24,7 @@ public class HomeScreen {
                     OrderScreen order = new OrderScreen();
                     order.run();
                     break; // Added a break statement to an exit switch case
-                case "0":
+                case "2":
                     System.out.println("Exiting...");
                     System.exit(0);
                     return; // Exiting the program

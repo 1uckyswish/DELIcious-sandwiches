@@ -23,11 +23,11 @@ public class OrderScreen {
             System.out.println("\n+--------------------------------------+");
             System.out.println("|             ORDER SCREEN             |");
             System.out.println("+--------------------------------------+");
-            System.out.println("| 1) Would you like a Sandwich?       |");
-            System.out.println("| 2) Would you like a drink?          |");
-            System.out.println("| 3) Would you like a bag of chips?   |");
-            System.out.println("| 4) Checkout                         |");
-            System.out.println("| 5) Exit                             |");
+            System.out.println("| 1️⃣ - Would you like a Sandwich🥪?    |");
+            System.out.println("| 2️⃣ - Would you like a Drink🥤?       |");
+            System.out.println("| 3️⃣ - Would you like Chips🥫?         |");
+            System.out.println("| 4️⃣ - Checkout💰                      |");
+            System.out.println("| 5️⃣ - Exit👋🏻                          |");
 //            System.out.println("+--------------------------------------+");
             System.out.print("\nEnter your choice: ");
 
@@ -38,10 +38,10 @@ public class OrderScreen {
                     addSandwich();
                     break;
                 case "2":
-                    createDrink();
+                    addDrink();
                     break;
                 case "3":
-                    createChips();
+                    addChips();
                     break;
                 case "4":
                     checkoutCart();
@@ -49,6 +49,7 @@ public class OrderScreen {
                 case "6":
                     System.out.println(sandwichCart);
                     System.out.println(drinkCart);
+                    System.out.println(chipCart);
                     break;
                 case "5":
                     exitBackHome();
@@ -70,7 +71,7 @@ public class OrderScreen {
         sandwichCart.add(newSandwich);
     }
 
-    private void createDrink() {
+    private void addDrink() {
         // Implement drink creation logic
         CreateDrink drinkCreator = new CreateDrink(scanner);
 
@@ -79,8 +80,10 @@ public class OrderScreen {
         drinkCart.add(newDrink);
     }
 
-    private void createChips() {
-        // Implement chips creation logic
+    private void addChips() {
+        CreateChip chipCreator = new CreateChip(scanner);
+        String newChip = chipCreator.createChips();
+        chipCart.add(newChip);
     }
 
     private void checkoutCart() {

@@ -159,9 +159,7 @@ public class Sandwich extends Order{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("|+--------------------------------------+\n");
-        sb.append("|        Sandwich Order Summary         |\n");
-        sb.append("|+--------------------------------------+\n");
-        sb.append("|Bread Type: ").append(type).append("\n");
+        sb.append("|Bread Choice: ").append(type).append("\n");
         sb.append("|Bread Size: ").append(size).append(" inch\n");
         sb.append("|Base Price: $").append(String.format("%.2f", sizePrice)).append("\n");
         sb.append("|Toasted: ").append(toasted ? "Yes" : "No").append("\n");
@@ -200,7 +198,7 @@ public class Sandwich extends Order{
             sb.append("|Sides: 4oz Au Jus sauce\n");
         }
 
-        sb.append("|Total Price: $").append(String.format("%.2f", price)).append("\n");
+        sb.append("|Sandwich Price: $").append(String.format("%.2f", price)).append("\n");
         sb.append("|+--------------------------------------+\n");
 
         return sb.toString();

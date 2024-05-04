@@ -98,7 +98,51 @@ public class UtilityMethods {
             System.out.println("Invalid Topping choice. Please choose one of the available options.");
         }
     }
+
+    public static String validateBeverageChoice(Scanner scanner, List<String> beverageChoices) {
+        while (true) {
+            System.out.println("\nChoose a Beverage To add🧃");
+            for (String beverage : beverageChoices) {
+                System.out.println("❥ " + beverage);
+            }
+
+            System.out.print("Enter your choice: ");
+            String selectedBeverage = scanner.nextLine().trim();
+
+            for (String beverage : beverageChoices) {
+                if (selectedBeverage.equalsIgnoreCase(beverage)) {
+                    return selectedBeverage; // Input matches one of the meat options
+                }
+            }
+
+            System.out.println("Invalid Beverage choice. Please choose one of the available options.");
+        }
+    }
+
+
+
+    public static String validateChipChoice(Scanner scanner, List<String> chipChoices) {
+        while (true) {
+            System.out.println("\nChoose a bag of chips to add🥫");
+            for (String chip : chipChoices) {
+                System.out.println("❥ " + chip);
+            }
+
+            System.out.print("Enter your choice: ");
+            String selectedChip = scanner.nextLine().trim();
+
+            for (String chip : chipChoices) {
+                if (selectedChip.equalsIgnoreCase(chip)) {
+                    return selectedChip; // Input matches one of the meat options
+                }
+            }
+
+            System.out.println("Invalid Chip choice. Please choose one of the available options.");
+        }
+    }
+
 }
+
 
 
 //reference for signs

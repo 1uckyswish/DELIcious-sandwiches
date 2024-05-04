@@ -1,13 +1,12 @@
 package com.pluralsight.models;
 
-public class Drink extends Order{
+public class Drink extends Order {
     private boolean hasDrink;
-    private double sizePrice;
 
     public Drink(String size, String type, boolean hasDrink, double sizePrice) {
         super(size, type);
         this.hasDrink = hasDrink;
-        this.sizePrice = sizePrice;
+        this.price = sizePrice;
     }
 
     public boolean isHasDrink() {
@@ -18,22 +17,26 @@ public class Drink extends Order{
         this.hasDrink = hasDrink;
     }
 
-    public double getSizePrice() {
-        return sizePrice;
-    }
-
-    public void setSizePrice(double sizePrice) {
-        this.sizePrice = sizePrice;
+    @Override
+    public double getPrice() {
+        return price;
     }
 
     @Override
     public String toString() {
-        return "Drink{" +
-                "hasDrink=" + hasDrink +
-                ", sizePrice=" + sizePrice +
-                ", size='" + size + '\'' +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("|+--------------------------------------+\n");
+        sb.append("|Drink Choice: ").append(capitalizeFirstLetter(type)).append("\n");
+        sb.append("|Drink Size: ").append(size).append("\n");
+        sb.append("|Drink Price: $").append(String.format("%.2f", price)).append("\n");
+        sb.append("|+--------------------------------------+\n");
+        return sb.toString();
+    }
+
+    private String capitalizeFirstLetter(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }
