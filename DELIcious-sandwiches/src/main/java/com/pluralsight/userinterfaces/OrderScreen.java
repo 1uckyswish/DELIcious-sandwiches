@@ -1,13 +1,23 @@
 package com.pluralsight.userinterfaces;
 
+import com.pluralsight.models.Chip;
+import com.pluralsight.models.Drink;
+import com.pluralsight.models.Sandwich;
+import com.pluralsight.utilitymethods.UtilityMethods;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class OrderScreen {
-    private List<String> sandwichCart;
-    private List<String> drinkCart;
-    private List<String> chipCart;
+    private List<Sandwich> sandwichCart;
+    private List<Drink> drinkCart;
+    private List<Chip> chipCart;
     private double totalPrice;
     private static Scanner scanner = new Scanner(System.in);
 
@@ -15,8 +25,9 @@ public class OrderScreen {
         this.sandwichCart = new ArrayList<>();
         this.drinkCart = new ArrayList<>();
         this.chipCart = new ArrayList<>();
-        this.totalPrice = 0.00;
+        totalPrice = 0.00;
     }
+
 
     public boolean run() {
         while (true) {
@@ -66,7 +77,7 @@ public class OrderScreen {
         CreateSandwich sandwichCreator = new CreateSandwich(scanner);
 
         // Call createSandwich method to create a sandwich
-        String newSandwich = sandwichCreator.createSandwich();
+        Sandwich newSandwich = sandwichCreator.createSandwich();
         // Add the created sandwich to sandwichCart
         sandwichCart.add(newSandwich);
     }
@@ -75,19 +86,150 @@ public class OrderScreen {
         // Implement drink creation logic
         CreateDrink drinkCreator = new CreateDrink(scanner);
 
-        String newDrink = drinkCreator.createDrink();
+        Drink newDrink = drinkCreator.createDrink();
 
         drinkCart.add(newDrink);
     }
 
     private void addChips() {
         CreateChip chipCreator = new CreateChip(scanner);
-        String newChip = chipCreator.createChips();
+        Chip newChip = chipCreator.createChips();
         chipCart.add(newChip);
     }
 
     private void checkoutCart() {
-        // Implement checkout logic
+        System.out.println("\n======================================");
+        System.out.println("|          Order Overview            |");
+        System.out.println("======================================\n");
+        System.out.println("~~ Sandwiches ~~");
+        double sandwichTotal = 0.00;
+        for (Sandwich sandwich : sandwichCart){
+            sandwichTotal += sandwich.calculateTotalPrice();
+            System.out.println(sandwich);
+        }
+
+        double drinkTotal = 0.00;
+        System.out.println("~~ Drinks ~~");
+        for (Drink drink : drinkCart){
+            drinkTotal += drink.getPrice();
+            System.out.println(drink);
+        }
+
+        double chipTotal = 0.00;
+        System.out.println("~~ Chips ~~");
+        for (Chip chip : chipCart){
+            chipTotal += chip.getPrice();
+            System.out.println(chip);
+        }
+
+        totalPrice = (sandwichTotal + drinkTotal + chipTotal);
+
+        System.out.printf("Total Price: $%,.2f", totalPrice);
+
+        System.out.println("\nWhat would you like to do now?");
+        System.out.println("1️⃣ Proceed to checkout");
+        System.out.println("2️⃣ Cancel order");
+        System.out.println("3️⃣ Continue shopping");
+        System.out.print("Enter your choice (1, 2, 3): ");
+        String userChoice = scanner.nextLine().trim();
+        switch (userChoice){
+            case "1" -> {
+                createReceipt();
+                return;
+            }
+            case "2" -> {
+                clearCart();
+                return;
+            }
+            case "3" -> {
+                run();
+                break;
+            }
+            default ->   System.out.println("Invalid choice. Please enter again.");
+        }
+
+    }
+
+    private void createReceipt(){
+        // Get the current date
+        Date currentDate = new Date();
+        // Define the desired date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+        // Format the current date
+        String formattedDate = dateFormat.format(currentDate);
+        String filePath = "/Users/butterflycoupe/Desktop/YearUp/DELIcious-sandwiches/DELIcious-sandwiches/DELIcious-sandwiches/Receipts/" + formattedDate + ".txt";
+
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            writer.write("======================================\n");
+            writer.write("              SANDWICHES              \n");
+            writer.write("======================================\n");
+            writer.newLine();
+            for (Sandwich sandwich : sandwichCart){
+               writer.write(String.valueOf(sandwich));
+                writer.newLine();
+            }
+
+            writer.write("\n======================================\n");
+            writer.write("                DRINKS                \n");
+            writer.write("======================================\n");
+            writer.newLine();
+            for (Drink drink : drinkCart){
+               writer.write(String.valueOf(drink));
+                writer.newLine();
+            }
+
+            writer.write("\n======================================\n");
+            writer.write("                CHIPS                 \n");
+            writer.write("======================================\n");
+            writer.newLine();
+            for (Chip chip : chipCart){
+               writer.write(String.valueOf(chip));
+                writer.newLine();
+            }
+
+            // Total Price
+            // Total Price
+            String totalPriceLine = String.format("Total Price: $%.2f", totalPrice);
+            int totalLength = totalPriceLine.length();
+            int padding = (42 - totalLength) / 2; // Assuming the total line length is 42 characters
+            String paddingStr = " ".repeat(padding);
+
+            writer.write("\n==============================================\n");
+            writer.write(paddingStr + totalPriceLine + paddingStr + "\n");
+            writer.write("==============================================\n");
+
+
+            // Ending
+            writer.write("==============================================\n");
+            writer.write("  Thank you for your order! Enjoy your meal!  \n");
+            writer.write("==============================================\n");
+            writer.write("Store Name:    DELI-CIOUS Sandwiches\n");
+            writer.write("Address:       726 Java drive, Bronx, NY, \n");
+            writer.write("Manager:       James Gosling\n");
+            writer.write("Established:   May 12, 1995\n");
+            writer.write("Hours:         Monday - Saturday: 10:00 AM - 8:00 PM\n");
+            writer.write("               Sunday: 11:00 AM - 6:00 PM\n");
+            writer.write("Phone:         (800) 223-1711\n");
+            writer.write("Website:       www.delicious-sandwiches.com\n");
+            writer.write("\n");
+            writer.write("Thank you for choosing DELI-CIOUS Sandwiches!\n");
+            writer.write("We appreciate your business.\n");
+
+            writer.flush();
+            writer.close();
+            clearCart();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    public void clearCart(){
+        sandwichCart.clear();
+        drinkCart.clear();
+        chipCart.clear();
     }
 
     private void exitBackHome() {

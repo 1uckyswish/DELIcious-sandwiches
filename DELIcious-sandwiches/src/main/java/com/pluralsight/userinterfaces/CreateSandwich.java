@@ -17,7 +17,7 @@ public class CreateSandwich {
         this.scanner = scanner;
     }
 
-    public String createSandwich() {
+    public Sandwich createSandwich() {
         Sandwich sandwich;
         String sandwichSize;
         String sandwichBread;
@@ -67,7 +67,7 @@ public class CreateSandwich {
         System.out.println("    🥪   Sandwich Added   🥪");
         System.out.println("  🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪");
 
-        return sandwich.toString();
+        return sandwich;
 
     }
 

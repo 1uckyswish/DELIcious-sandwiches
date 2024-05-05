@@ -1,0 +1,70 @@
+~~ Sandwiches ~~
+|+--------------------------------------+
+|Bread Choice: Wrap
+|Bread Size: 12 inch
+|Base Price: $8.50
+|Toasted: Yes
+|Regular Toppings:
+|- Pickles
+|- Onions
+|Premium Toppings:
+|- Ham
+|- Steak
+|- Cheddar
+|- American
+|- Provolone
+|Toppings cost:
+|- Meat price: $3.00
+|  - Extra Meat Cost: $1.50
+|- Cheese price: $2.25
+|  - Extra Cheese Cost: $1.80
+|Sides: 4oz Au Jus sauce
+|Sandwich Price: $17.05
+|+--------------------------------------+
+
+|+--------------------------------------+
+|Bread Choice: White
+|Bread Size: 12 inch
+|Base Price: $8.50
+|Toasted: No
+|Regular Toppings:
+|- Peppers
+|- Mushrooms
+|- Guacamole
+|- Mustard
+|- Ketchup
+|Premium Toppings:
+|- Bacon
+|- Steak
+|- Cheddar
+|- American
+|Toppings cost:
+|- Meat price: $3.00
+|  - Extra Meat Cost: $1.50
+|- Cheese price: $2.25
+|  - Extra Cheese Cost: $0.90
+|Sandwich Price: $16.15
+|+--------------------------------------+
+
+~~ Drinks ~~
+|+--------------------------------------+
+|Drink Choice: Coke
+|Drink Size: Small
+|Drink Price: $2.00
+|+--------------------------------------+
+
+|+--------------------------------------+
+|Drink Choice: Iced coffee
+|Drink Size: Large
+|Drink Price: $3.00
+|+--------------------------------------+
+
+~~ Chips ~~
+|+--------------------------------------+
+|Chip Choice: Doritos
+|Chip Size: Snack Size
+|Chip Price: $1.50
+|+--------------------------------------+
+
+
+Total Price: $39.70

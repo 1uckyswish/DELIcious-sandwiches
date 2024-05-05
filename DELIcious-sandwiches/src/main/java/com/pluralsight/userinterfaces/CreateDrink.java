@@ -15,7 +15,7 @@ public class CreateDrink {
         this.scanner = scanner;
     }
 
-    public String createDrink(){
+    public Drink createDrink(){
         Drink drink;
         String drinkSize;
         String drinkType;
@@ -40,7 +40,7 @@ public class CreateDrink {
         System.out.println("     🥤  Beverage Added  🥤");
         System.out.println("  🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤");
 
-        return drink.toString();
+        return drink;
     }
 
 

@@ -17,7 +17,7 @@ public class CreateChip {
         this.scanner = scanner;
     }
 
-    public String createChips(){
+    public Chip createChips(){
         Chip chip;
         String chipType;
 
@@ -32,7 +32,7 @@ public class CreateChip {
         System.out.println("  🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔");
 
 
-        return chip.toString();
+        return chip;
     }
 
 
