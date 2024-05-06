@@ -159,6 +159,8 @@ public class Sandwich extends Order{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("|+--------------------------------------+\n");
+        sb.append("| Custom Sandwich\n"); // Add the header here
+        sb.append("|+--------------------------------------+\n");
         sb.append("|Bread Choice: ").append(type).append("\n");
         sb.append("|Bread Size: ").append(size).append(" inch\n");
         sb.append("|Base Price: $").append(String.format("%.2f", sizePrice)).append("\n");

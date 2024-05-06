@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class CreateSandwich {
     private static Scanner scanner;
-    private List<String> meatToppings = loadMeatToppings();
-    private List<String> cheeseToppings = loadCheeseToppings();
-    private List<String> regularToppings = loadRegularToppings();
-    private List<String> sauceOptions = loadSauceToppings();
+    private final List<String> meatToppings = loadMeatToppings();
+    private final List<String> cheeseToppings = loadCheeseToppings();
+    private final List<String> regularToppings = loadRegularToppings();
+    private final List<String> sauceOptions = loadSauceToppings();
 
     public CreateSandwich(Scanner scanner) {
         this.scanner = scanner;
@@ -49,7 +49,7 @@ public class CreateSandwich {
 
         System.out.print("\nWould you like your sandwich toasted🥪? (Y/N): ");
         String toastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like your sandwich toasted? (Y/N): ");
-        isToasted = (toastChoice.equalsIgnoreCase("Y") ? true : false);
+        isToasted = (toastChoice.equalsIgnoreCase("Y"));
 
 //Make new object to access methods
         sandwich = new Sandwich(sandwichSize, sandwichBread, isToasted);
@@ -76,10 +76,19 @@ public class CreateSandwich {
 
 
 
-    public BLT customSignatureSandwich(){
-        BLT currentBLT = new BLT();
+    public Sandwich customSignatureSandwich(String signature){
+
+        Sandwich sandwichInstance = null;
+
+        if (signature.equalsIgnoreCase("BLT")) {
+            sandwichInstance = new BLT(); // Instantiate a new BLT object
+        } else if (signature.equalsIgnoreCase("Philly")) {
+            sandwichInstance = new Philly(); // Instantiate a new Philly object
+        }
+
+
         System.out.println("\n======================================");
-        System.out.println("|       Customizing BLT Sandwich     |");
+        System.out.println("|       Customizing "+signature+" Sandwich     |");
         System.out.println("======================================\n");
 
         System.out.print("Would you like to change bread type? (Y/N):");
@@ -93,7 +102,7 @@ public class CreateSandwich {
             System.out.println("4️⃣ - Wrap");
             System.out.print("Enter your choice (1, 2, 3, 4): ");
             String breadChoice = UtilityMethods.takeBreadTypeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3, 4): ");
-            currentBLT.setType(breadChoice.equals("1") ? "White" : breadChoice.equals("2") ? "Wheat" : breadChoice.equals("3") ? "Rye" : "Wrap");
+            sandwichInstance.setType(breadChoice.equals("1") ? "White" : breadChoice.equals("2") ? "Wheat" : breadChoice.equals("3") ? "Rye" : "Wrap");
         }
 
         System.out.print("Would you like to change Sandwich size? (Y/N):");
@@ -105,26 +114,140 @@ public class CreateSandwich {
             System.out.println("3️⃣ - 12-inch");
             System.out.print("Enter your choice (1, 2, 3): ");
             String sizeChoice = UtilityMethods.takeSizeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3): ");
-            currentBLT.setSize((sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12"));
-            currentBLT.setSizePrice((currentBLT.getSize().equals("4") ? 5.50 : currentBLT.getSize().equals("8") ? 7.00 : 8.50));
+            sandwichInstance.setSize((sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12"));
+            sandwichInstance.setSizePrice((sandwichInstance.getSize().equals("4") ? 5.50 : sandwichInstance.getSize().equals("8") ? 7.00 : 8.50));
         }
 
 
 
-        System.out.println("Would you like to keep the sandwich Toasted? (Y/N):");
+        System.out.print("Would you like to keep the sandwich Toasted? (Y/N): ");
         String userToastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to keep the sandwich Toasted? (Y/N):");
         if (userToastChoice.equalsIgnoreCase("N")){
-            currentBLT.setToasted(false);
+            sandwichInstance.setToasted(false);
         }
 
-        setSignatureMeatToppingsAndBooleanValue(currentBLT);
-        setSignatureCheeseToppingsAndBooleanValue(currentBLT);
+        setSignatureMeatToppingsAndBooleanValue((ToppingsManipulable) sandwichInstance);
+        setSignatureCheeseToppingsAndBooleanValue((ToppingsManipulable) sandwichInstance);
+        setSignatureRegularToppings((ToppingsManipulable) sandwichInstance);
+        setSignatureSauceToppings((ToppingsManipulable) sandwichInstance);
+        sandwichInstance.setPrice(sandwichInstance.calculateTotalPrice());
 
-
-
-        return currentBLT;
+        return sandwichInstance;
     }
 
+    private void setSignatureSauceToppings(ToppingsManipulable sandwich) {
+        Sandwich sandwichInstance = null;
+
+        if (sandwich instanceof BLT) {
+            sandwichInstance = (BLT) sandwich;
+        } else if (sandwich instanceof Philly) {
+            sandwichInstance = (Philly) sandwich;
+        }
+
+        List<String> selectedSauceToppings = new ArrayList<>();
+        boolean addMoreSauces = false;
+        boolean saucesSelected = false;
+
+        System.out.print("Would you like to remove the current sauce topping? (Y/N): ");
+        String userRemoveSauceToppingChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to remove any of the current sauce topping? (Y/N): ");
+        if (userRemoveSauceToppingChoice.equalsIgnoreCase("Y")) {
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).removeRegularTopping("Ranch");
+                System.out.println("\n~~ Ranch Sauce Removed ~~");
+            } else if (sandwichInstance instanceof Philly) {
+                ((Philly) sandwichInstance).removeRegularTopping("Mayo");
+                System.out.println("\n~~ Mayo Sauce Removed ~~");
+            }
+        }
+
+        System.out.print("\nWould you like sauce added to your sandwich🧂? (Y/N): ");
+        String sauceChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like sauce added to your sandwich🧂? (Y/N): ");
+
+        if (sauceChoice.equalsIgnoreCase("Y")) {
+            saucesSelected = true;
+
+            // Loop for selecting sauces
+            do {
+                String selectedSauce = UtilityMethods.validateToppingsChoice(scanner, sauceOptions);
+                selectedSauceToppings.add(selectedSauce);
+
+                System.out.print("\nWould you like additional sauces added🧂? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like additional sauces added🧂? (Y/N): ");
+                addMoreSauces = (repeatChoice.equalsIgnoreCase("Y") ? true : false);
+            } while (addMoreSauces); // Continue looping if user wants more sauces
+        }
+
+        // Add selected sauces to the sandwich if any sauces are selected
+
+        if (saucesSelected) {
+            for (String topping : selectedSauceToppings) {
+                if (sandwichInstance instanceof BLT) {
+                    ((BLT) sandwichInstance).addRegularTopping(topping);
+                } else if (sandwichInstance instanceof Philly) {
+                    ((Philly) sandwichInstance).addRegularTopping(topping);
+                }
+            }
+        }
+    }
+
+    private void setSignatureRegularToppings(ToppingsManipulable sandwich){
+        Sandwich sandwichInstance = null;
+
+        if (sandwich instanceof BLT) {
+            sandwichInstance = (BLT) sandwich;
+        } else if (sandwich instanceof Philly) {
+            sandwichInstance = (Philly) sandwich;
+        }
+
+        List<String> selectedRegularToppings = new ArrayList<>();
+        boolean addMoreToppings = false;
+        boolean toppingsSelected = false;
+
+        System.out.print("Would you like to remove the current veggie topping? (Y/N): ");
+        String userRemoveVeggieToppingChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to remove any of the current veggie topping? (Y/N): ");
+        if(userRemoveVeggieToppingChoice.equalsIgnoreCase("Y")){
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).removeRegularTopping("Lettuce");
+                ((BLT) sandwichInstance).removeRegularTopping("Tomato");
+                System.out.println("\n~~ Lettuce & Tomato Removed ~~");
+            } else if (sandwichInstance instanceof Philly) {
+                ((Philly) sandwichInstance).removeRegularTopping("Peppers");
+                System.out.println("\n~~ Peppers Removed ~~");
+            }
+        }
+
+
+        System.out.print("\nWould you like veggie toppings in your sandwich🥗? (Y/N): ");
+        String toppingsChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like veggie toppings in your sandwich🥗? (Y/N): ");
+
+        if (toppingsChoice.equalsIgnoreCase("Y")) {
+            toppingsSelected = true;
+
+            // Loop for selecting meat
+            do {
+                String selectedToppings = UtilityMethods.validateToppingsChoice(scanner, regularToppings);
+                selectedRegularToppings.add(selectedToppings);
+
+                System.out.print("\nWould you like additional veggie toppings🥒? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like additional veggie toppings🧅? (Y/N): ");
+                addMoreToppings = repeatChoice.equalsIgnoreCase("Y");
+
+
+            } while (addMoreToppings); // Continue looping if user wants more toppings
+        }
+
+        // Add selected meats to the sandwich if meat is selected
+        if (toppingsSelected) {
+            for (String topping : selectedRegularToppings) {
+                if (sandwichInstance instanceof BLT) {
+                    ((BLT) sandwichInstance).addRegularTopping(topping);
+                } else if (sandwichInstance instanceof Philly) {
+                    ((Philly) sandwichInstance).addRegularTopping(topping);
+                }
+            }
+        }
+
+    }
 
     private void setSignatureMeatToppingsAndBooleanValue(ToppingsManipulable sandwich) {
         Sandwich sandwichInstance = null;
@@ -133,8 +256,6 @@ public class CreateSandwich {
             sandwichInstance = (BLT) sandwich;
         } else if (sandwich instanceof Philly) {
             sandwichInstance = (Philly) sandwich;
-        } else {
-            // Handle the case when sandwich is neither BLT nor Philly
         }
 
         List<String> selectedMeats = new ArrayList<>();
@@ -148,13 +269,12 @@ public class CreateSandwich {
                 ((BLT) sandwichInstance).removePremiumTopping("Bacon");
                 ((BLT) sandwichInstance).setHasMeat(false);
                 ((BLT) sandwichInstance).setMeatPrice(0.00);
-                System.out.println("Bacon Removed");
+                System.out.println("\n ~~ Bacon Removed ~~ ");
             } else if (sandwichInstance instanceof Philly) {
-                // Assuming Philly has a method to remove the meat topping
-//                ((Philly) sandwichInstance).removePremiumTopping("Steak");
-//                ((Philly) sandwichInstance).setHasMeat(false);
-//                ((Philly) sandwichInstance).setMeatPrice(0.00);
-                System.out.println("Steak Removed");
+                ((Philly) sandwichInstance).removePremiumTopping("Steak");
+                ((Philly) sandwichInstance).setHasMeat(false);
+                ((Philly) sandwichInstance).setMeatPrice(0.00);
+                System.out.println("\n ~~ Steak Removed ~~");
             }
         }
 
@@ -168,7 +288,8 @@ public class CreateSandwich {
                 ((BLT) sandwichInstance).setMeatPrice(((BLT) sandwichInstance).getSize().equals("4") ? 1.00 : ((BLT) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
                 meatSelected = true;
             } else if (sandwichInstance instanceof Philly) {
-                // Handle setting meat properties for Philly sandwich (if needed)
+                ((Philly) sandwichInstance).setHasMeat(true);
+                ((Philly) sandwichInstance).setMeatPrice(((Philly) sandwichInstance).getSize().equals("4") ? 1.00 : ((Philly) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
             }
 
             // Loop for selecting meat
@@ -185,13 +306,13 @@ public class CreateSandwich {
                     if (sandwichInstance instanceof BLT) {
                         ((BLT) sandwichInstance).setExtraMeat(true);
                     } else if (sandwichInstance instanceof Philly) {
-                        // Handle setting extra meat for Philly sandwich (if needed)
+                        ((Philly) sandwichInstance).setExtraMeat(true);
                     }
                 } else {
                     if (sandwichInstance instanceof BLT) {
                         ((BLT) sandwichInstance).setExtraMeat(false);
                     } else if (sandwichInstance instanceof Philly) {
-                        // Handle setting extra meat for Philly sandwich (if needed)
+                        ((Philly) sandwichInstance).setExtraMeat(false);
                     }
                 }
 
@@ -204,7 +325,7 @@ public class CreateSandwich {
                 if (sandwichInstance instanceof BLT) {
                     ((BLT) sandwichInstance).addPremiumTopping(meat);
                 } else if (sandwichInstance instanceof Philly) {
-                    // Handle adding meat to PHILLY sandwich (if needed)
+                    ((Philly) sandwichInstance).addPremiumTopping(meat);
                 }
             }
         }
@@ -236,7 +357,6 @@ public class CreateSandwich {
 
     }
 
-
     private void setSignatureCheeseToppingsAndBooleanValue(ToppingsManipulable sandwich) {
         Sandwich sandwichInstance = null;
 
@@ -244,8 +364,6 @@ public class CreateSandwich {
             sandwichInstance = (BLT) sandwich;
         } else if (sandwich instanceof Philly) {
             sandwichInstance = (Philly) sandwich;
-        } else {
-            // Handle the case when sandwich is neither BLT nor Philly
         }
 
         List<String> selectedCheeses = new ArrayList<>();
@@ -259,13 +377,12 @@ public class CreateSandwich {
                 ((BLT) sandwichInstance).removePremiumTopping("Cheddar");
                 ((BLT) sandwichInstance).setHasCheese(false);
                 ((BLT) sandwichInstance).setCheesePrice(0.00);
-                System.out.println("Cheddar Cheese Removed");
+                System.out.println("\n ~~ Cheddar Cheese Removed ~~");
             } else if (sandwichInstance instanceof Philly) {
-                // Assuming Philly has a method to remove the meat topping
-//                ((Philly) sandwichInstance).removePremiumTopping("Steak");
-//                ((Philly) sandwichInstance).setHasMeat(false);
-//                ((Philly) sandwichInstance).setMeatPrice(0.00);
-                System.out.println("Steak Removed");
+                ((Philly) sandwichInstance).removePremiumTopping("American");
+                ((Philly) sandwichInstance).setHasCheese(false);
+                ((Philly) sandwichInstance).setCheesePrice(0.00);
+                System.out.println("\n ~~ American Cheese Removed ~~");
             }
         }
 
@@ -279,7 +396,8 @@ public class CreateSandwich {
                 ((BLT) sandwichInstance).setCheesePrice(((BLT) sandwichInstance).getSize().equals("4") ? 1.00 : ((BLT) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
                 cheeseSelected = true;
             } else if (sandwichInstance instanceof Philly) {
-                // Handle setting meat properties for Philly sandwich (if needed)
+                ((Philly) sandwichInstance).setHasCheese(true);
+                ((Philly) sandwichInstance).setCheesePrice(((Philly) sandwichInstance).getSize().equals("4") ? 1.00 : ((Philly) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
             }
 
             // Loop for selecting meat
@@ -296,13 +414,13 @@ public class CreateSandwich {
                     if (sandwichInstance instanceof BLT) {
                         ((BLT) sandwichInstance).setExtraCheese(true);
                     } else if (sandwichInstance instanceof Philly) {
-                        // Handle setting extra meat for Philly sandwich (if needed)
+                        ((Philly) sandwichInstance).setExtraCheese(true);
                     }
                 } else {
                     if (sandwichInstance instanceof BLT) {
                         ((BLT) sandwichInstance).setExtraCheese(false);
                     } else if (sandwichInstance instanceof Philly) {
-                        // Handle setting extra meat for Philly sandwich (if needed)
+                        ((Philly) sandwichInstance).setExtraCheese(false);
                     }
                 }
 
@@ -315,7 +433,7 @@ public class CreateSandwich {
                 if (sandwichInstance instanceof BLT) {
                     ((BLT) sandwichInstance).addPremiumTopping(cheese);
                 } else if (sandwichInstance instanceof Philly) {
-                    // Handle adding meat to PHILLY sandwich (if needed)
+                    ((Philly) sandwichInstance).addPremiumTopping(cheese);
                 }
             }
         }
@@ -345,9 +463,6 @@ public class CreateSandwich {
         // Update the total cost of the sandwich
         sandwichInstance.setExtraCheesePrice(extraCheeseCost);
     }
-
-
-
 
     private void setMeatToppingsAndBooleanValue(Sandwich sandwich) {
         List<String> selectedMeats = new ArrayList<>();
@@ -468,7 +583,6 @@ public class CreateSandwich {
 
     }
 
-
     private void setRegularToppings(Sandwich sandwich){
         List<String> selectedRegularToppings = new ArrayList<>();
         boolean addMoreToppings = false;
@@ -500,7 +614,6 @@ public class CreateSandwich {
             }
         }
     }
-
 
     private void setSaucesToppings(Sandwich sandwich){
         List<String> selectedSauceToppings = new ArrayList<>();
@@ -570,8 +683,6 @@ public class CreateSandwich {
         regularToppings.add("Onions");
         return regularToppings;
     }
-
-
 
     private List<String> loadSauceToppings() {
         List<String> sauceToppings = new ArrayList<>();

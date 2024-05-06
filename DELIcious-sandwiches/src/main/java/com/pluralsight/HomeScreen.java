@@ -25,7 +25,7 @@ public class HomeScreen {
                     order.run();
                     break; // Added a break statement to an exit switch case
                 case "2":
-                    System.out.println("Exiting...");
+                    System.out.println("\nExiting...\n");
                     System.exit(0);
                     return; // Exiting the program
                 default:

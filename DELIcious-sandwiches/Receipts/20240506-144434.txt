@@ -1,0 +1,42 @@
+======================================
+              SANDWICHES              
+======================================
+
+No sandwiches Ordered
+
+
+======================================
+                DRINKS                
+======================================
+
+|+--------------------------------------+
+|Drink Choice: Coke
+|Drink Size: Small
+|Drink Price: $2.00
+|+--------------------------------------+
+
+
+======================================
+                CHIPS                 
+======================================
+
+No Chips Ordered
+
+
+==============================================
+            Total Price: $2.00            
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

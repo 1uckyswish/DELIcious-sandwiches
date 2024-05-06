@@ -19,9 +19,13 @@ public class BLT extends Sandwich implements ToppingsManipulable{
         setHasMeat(true);
         setHasCheese(true);
         setPrice(10.50);
-        // Set the regular and premium toppings specific to BLT
-        this.setRegularToppings(Arrays.asList("Lettuce", "Tomato", "Ranch"));
-        this.setPremiumToppings(Arrays.asList("Bacon", "Cheddar"));
+        // Create new ArrayList instances for regular and premium toppings
+        List<String> regularToppings = new ArrayList<>(Arrays.asList("Lettuce", "Tomato", "Ranch"));
+        List<String> premiumToppings = new ArrayList<>(Arrays.asList("Bacon", "Cheddar"));
+
+        // Set the regular and premium toppings
+        this.setRegularToppings(regularToppings);
+        this.setPremiumToppings(premiumToppings);
     }
 
     public void removeRegularTopping(String topping) {
@@ -46,6 +50,8 @@ public class BLT extends Sandwich implements ToppingsManipulable{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("|+--------------------------------------+\n");
+        sb.append("| Signature BLT Special\n"); // Add the header here
         sb.append("|+--------------------------------------+\n");
         sb.append("|Bread Choice: ").append(getType()).append("\n");
         sb.append("|Bread Size: ").append(getSize()).append(" inch\n");

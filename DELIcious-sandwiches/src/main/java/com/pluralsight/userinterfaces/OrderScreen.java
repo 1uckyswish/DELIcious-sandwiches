@@ -1,9 +1,6 @@
 package com.pluralsight.userinterfaces;
 
-import com.pluralsight.models.BLT;
-import com.pluralsight.models.Chip;
-import com.pluralsight.models.Drink;
-import com.pluralsight.models.Sandwich;
+import com.pluralsight.models.*;
 import com.pluralsight.utilitymethods.UtilityMethods;
 
 import java.io.BufferedWriter;
@@ -65,7 +62,7 @@ public class OrderScreen {
                     break;
                 case "5":
                     exitBackHome();
-                    System.out.println("Exiting...");
+                    System.out.println("\nExiting...\n");
                     return false; // Exit the method and indicate that the user chose to exit
                 default:
                     System.out.println("Invalid choice. Please enter again.");
@@ -92,12 +89,76 @@ public class OrderScreen {
         }
     }
 
-    private void addSignatureSandwich(){
-        BLT myblt = new BLT();
+    private void addSignatureSandwich() {
         CreateSandwich sandwichCreator = new CreateSandwich(scanner);
-        BLT blt = sandwichCreator.customSignatureSandwich();
-        sandwichCart.add(blt);
+
+        Scanner scanner = new Scanner(System.in);
+
+        String choice = "";
+        boolean validChoice = false;
+
+        while (!validChoice) {
+            System.out.println("Would you like to order a BLT or a Philly sandwich?");
+            System.out.print("Enter 'BLT' or 'Philly': ");
+            choice = scanner.nextLine().trim();
+
+            switch (choice.toUpperCase()) {
+                case "BLT":
+                    System.out.print("Would you like to modify the BLT sandwich? (Y/N): ");
+                    validChoice = true;
+                    break;
+                case "PHILLY":
+                    System.out.print("Would you like to modify the Philly sandwich? (Y/N): ");
+                    validChoice = true;
+                    break;
+                default:
+                    System.out.println("\n ** Invalid choice. Please enter either 'BLT' or 'Philly'.** \n");
+                    break;
+            }
+        }
+
+        String modifyChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to modify the sandwich? (Y/N): ");
+        Sandwich sandwich;
+
+        if (modifyChoice.equalsIgnoreCase("Y")) {
+            switch (choice.toUpperCase()) {
+                case "BLT":
+                    sandwich = sandwichCreator.customSignatureSandwich("BLT");
+                    break;
+                case "PHILLY":
+                    sandwich = sandwichCreator.customSignatureSandwich("Philly");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter either 'BLT' or 'Philly'.");
+                    return; // Exit method if choice is invalid
+            }
+        } else {
+            switch (choice.toUpperCase()) {
+                case "BLT":
+                    sandwich = new BLT();
+                    break;
+                case "PHILLY":
+                    sandwich = new Philly();
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter either 'BLT' or 'Philly'.");
+                    return; // Exit method if choice is invalid
+            }
+        }
+
+        System.out.print("Would you like a side of 4oz Au Jus Sauce🍲? (Y/N): ");
+        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like a side of 4oz Au Jus Sauce🍲? (Y/N): ");
+        if (sideChoice.equalsIgnoreCase("Y")){
+            sandwich.addRegularTopping("4oz Au Jus sauce");
+        }
+
+        System.out.println("\n  🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪");
+        System.out.println(" 🥪 Signature Sandwich Added 🥪");
+        System.out.println("  🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪🥪");
+
+        sandwichCart.add(sandwich);
     }
+
 
 
     private void addCustomSandwich() {
@@ -107,6 +168,7 @@ public class OrderScreen {
             // Call createSandwich method to create a sandwich
             Sandwich newSandwich = sandwichCreator.createSandwich();
             // Add the created sandwich to sandwichCart
+        System.out.println("\n~~ Custom sandwich successfully added! ~~");
             sandwichCart.add(newSandwich);
 
     }
@@ -130,38 +192,51 @@ public class OrderScreen {
         System.out.println("\n======================================");
         System.out.println("|          Order Overview            |");
         System.out.println("======================================\n");
-        System.out.println("~~ Sandwiches ~~");
-        double sandwichTotal = 0.00;
-        for (Sandwich sandwich : sandwichCart){
-            // Check if the sandwich is a BLT
-            if (sandwich instanceof BLT) {
-                // For BLT sandwiches, calculate the total price using the BLT's overridden method
-                sandwichTotal += ((BLT) sandwich).getPrice();
-            } else {
-                // For other sandwiches, calculate the total price using the Sandwich class method
-                sandwichTotal += sandwich.calculateTotalPrice();
-            }
-            System.out.println(sandwich);
+
+        if (sandwichCart.isEmpty() && drinkCart.isEmpty() && chipCart.isEmpty()) {
+            System.out.println("Your cart is empty. Please add items to proceed with checkout.");
+            return;
         }
 
+        double sandwichTotal = 0.00;
+        System.out.println("~~ Sandwiches ~~");
+        if (!sandwichCart.isEmpty()) {
+            for (Sandwich sandwich : sandwichCart){
+                if (sandwich instanceof BLT) {
+                    sandwichTotal += ((BLT) sandwich).getPrice();
+                } else {
+                    sandwichTotal += sandwich.calculateTotalPrice();
+                }
+                System.out.println(sandwich);
+            }
+        } else {
+            System.out.println("No sandwiches in cart.\n");
+        }
 
         double drinkTotal = 0.00;
         System.out.println("~~ Drinks ~~");
-        for (Drink drink : drinkCart){
-            drinkTotal += drink.getPrice();
-            System.out.println(drink);
+        if (!drinkCart.isEmpty()) {
+            for (Drink drink : drinkCart){
+                drinkTotal += drink.getPrice();
+                System.out.println(drink);
+            }
+        } else {
+            System.out.println("No drinks in cart.\n");
         }
 
         double chipTotal = 0.00;
         System.out.println("~~ Chips ~~");
-        for (Chip chip : chipCart){
-            chipTotal += chip.getPrice();
-            System.out.println(chip);
+        if (!chipCart.isEmpty()) {
+            for (Chip chip : chipCart){
+                chipTotal += chip.getPrice();
+                System.out.println(chip);
+            }
+        } else {
+            System.out.println("No chips in cart.\n");
         }
 
-        totalPrice = (sandwichTotal + drinkTotal + chipTotal);
-
-        System.out.printf("Total Price: $%,.2f", totalPrice);
+        totalPrice = sandwichTotal + drinkTotal + chipTotal;
+        System.out.printf("Total Price: $%,.2f\n", totalPrice);
 
         System.out.println("\nWhat would you like to do now?");
         System.out.println("1️⃣ Proceed to checkout");
@@ -172,6 +247,8 @@ public class OrderScreen {
         switch (userChoice){
             case "1" -> {
                 createReceipt();
+                System.out.println("\nThank you for choosing DELI-CIOUS Sandwiches!");
+                System.out.println("\nWe appreciate your business.");
                 return;
             }
             case "2" -> {
@@ -184,7 +261,6 @@ public class OrderScreen {
             }
             default ->   System.out.println("Invalid choice. Please enter again.");
         }
-
     }
 
     private void createReceipt(){
@@ -202,8 +278,13 @@ public class OrderScreen {
             writer.write("              SANDWICHES              \n");
             writer.write("======================================\n");
             writer.newLine();
-            for (Sandwich sandwich : sandwichCart){
-               writer.write(String.valueOf(sandwich));
+            if (!sandwichCart.isEmpty()) {
+                for (Sandwich sandwich : sandwichCart){
+                    writer.write(String.valueOf(sandwich));
+                    writer.newLine();
+                }
+            } else {
+                writer.write("No sandwiches Ordered\n");
                 writer.newLine();
             }
 
@@ -211,19 +292,32 @@ public class OrderScreen {
             writer.write("                DRINKS                \n");
             writer.write("======================================\n");
             writer.newLine();
-            for (Drink drink : drinkCart){
-               writer.write(String.valueOf(drink));
+            if(!drinkCart.isEmpty()){
+                for (Drink drink : drinkCart){
+                    writer.write(String.valueOf(drink));
+                    writer.newLine();
+                }
+            } else {
+                writer.write("No Drinks Ordered\n");
                 writer.newLine();
             }
+
 
             writer.write("\n======================================\n");
             writer.write("                CHIPS                 \n");
             writer.write("======================================\n");
             writer.newLine();
-            for (Chip chip : chipCart){
-               writer.write(String.valueOf(chip));
+
+            if(!chipCart.isEmpty()){
+                for (Chip chip : chipCart){
+                    writer.write(String.valueOf(chip));
+                    writer.newLine();
+                }
+            }else {
+                writer.write("No Chips Ordered\n");
                 writer.newLine();
             }
+
 
             // Total Price
             // Total Price
