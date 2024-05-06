@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BLT extends Sandwich implements ToppingsManipulable {
+public class BLT extends Sandwich implements ToppingsManipulate {
 
     public BLT() {
         super("8", "White", true); // Call the constructor of the parent class with default values

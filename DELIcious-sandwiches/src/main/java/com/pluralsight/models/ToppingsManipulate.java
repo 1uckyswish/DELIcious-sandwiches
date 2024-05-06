@@ -1,6 +1,6 @@
 package com.pluralsight.models;
 
-public interface ToppingsManipulable {
+public interface ToppingsManipulate {
     void removeRegularTopping(String topping);
 
     void removePremiumTopping(String topping);

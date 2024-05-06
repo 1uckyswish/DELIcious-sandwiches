@@ -3,7 +3,7 @@ package com.pluralsight.userinterfaces;
 import com.pluralsight.models.BLT;
 import com.pluralsight.models.Philly;
 import com.pluralsight.models.Sandwich;
-import com.pluralsight.models.ToppingsManipulable;
+import com.pluralsight.models.ToppingsManipulate;
 import com.pluralsight.utilitymethods.UtilityMethods;
 
 import java.util.ArrayList;
@@ -142,10 +142,10 @@ public class CreateSandwich {
             }
         }
 
-        setSignatureMeatToppingsAndBooleanValue((ToppingsManipulable) sandwichInstance);
-        setSignatureCheeseToppingsAndBooleanValue((ToppingsManipulable) sandwichInstance);
-        setSignatureRegularToppings((ToppingsManipulable) sandwichInstance);
-        setSignatureSauceToppings((ToppingsManipulable) sandwichInstance);
+        setSignatureMeatToppingsAndBooleanValue((ToppingsManipulate) sandwichInstance);
+        setSignatureCheeseToppingsAndBooleanValue((ToppingsManipulate) sandwichInstance);
+        setSignatureRegularToppings((ToppingsManipulate) sandwichInstance);
+        setSignatureSauceToppings((ToppingsManipulate) sandwichInstance);
         if (sandwichInstance != null) {
             sandwichInstance.setPrice(sandwichInstance.calculateTotalPrice());
         }
@@ -153,7 +153,7 @@ public class CreateSandwich {
         return sandwichInstance;
     }
 
-    private void setSignatureSauceToppings(ToppingsManipulable sandwich) {
+    private void setSignatureSauceToppings(ToppingsManipulate sandwich) {
         Sandwich sandwichInstance = null;
 
         if (sandwich instanceof BLT) {
@@ -211,7 +211,7 @@ public class CreateSandwich {
         }
     }
 
-    private void setSignatureRegularToppings(ToppingsManipulable sandwich) {
+    private void setSignatureRegularToppings(ToppingsManipulate sandwich) {
         Sandwich sandwichInstance = null;
 
         if (sandwich instanceof BLT) {
@@ -271,7 +271,7 @@ public class CreateSandwich {
 
     }
 
-    private void setSignatureMeatToppingsAndBooleanValue(ToppingsManipulable sandwich) {
+    private void setSignatureMeatToppingsAndBooleanValue(ToppingsManipulate sandwich) {
         Sandwich sandwichInstance = null;
 
         if (sandwich instanceof BLT) {
@@ -368,7 +368,7 @@ public class CreateSandwich {
         }
     }
 
-    private void setSignatureCheeseToppingsAndBooleanValue(ToppingsManipulable sandwich) {
+    private void setSignatureCheeseToppingsAndBooleanValue(ToppingsManipulate sandwich) {
         Sandwich sandwichInstance = null;
 
         if (sandwich instanceof BLT) {
