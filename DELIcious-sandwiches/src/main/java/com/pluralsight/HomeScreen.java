@@ -13,13 +13,13 @@ public class HomeScreen {
         System.out.println("\t\t  - Your Ultimate sandwich shop! - \t");
         System.out.println("------------------------------------------------------");
 
-        while(true){
+        while (true) {
             System.out.println("--- Home screen ---");
             System.out.println("1️⃣ - New Order🧾");
             System.out.println("2️⃣ - Exit👋🏻");
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine();
-            switch (choice){
+            switch (choice) {
                 case "1":
                     OrderScreen order = new OrderScreen();
                     order.run();

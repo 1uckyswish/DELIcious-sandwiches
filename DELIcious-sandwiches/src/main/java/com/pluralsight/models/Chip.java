@@ -1,7 +1,7 @@
 package com.pluralsight.models;
 
-public class Chip extends Order{
-private boolean hasChips;
+public class Chip extends Order {
+    private boolean hasChips;
 
     public Chip(String type, boolean hasChips) {
         super("Snack Size", type);

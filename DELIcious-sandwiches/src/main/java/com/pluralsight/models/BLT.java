@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BLT extends Sandwich implements ToppingsManipulable{
+public class BLT extends Sandwich implements ToppingsManipulable {
 
     public BLT() {
         super("8", "White", true); // Call the constructor of the parent class with default values
@@ -36,7 +36,6 @@ public class BLT extends Sandwich implements ToppingsManipulable{
         }
     }
 
-
     public void removePremiumTopping(String topping) {
         List<String> premiumToppings = new ArrayList<>(getPremiumToppings());
         if (premiumToppings.contains(topping)) {
@@ -44,8 +43,6 @@ public class BLT extends Sandwich implements ToppingsManipulable{
             setPremiumToppings(premiumToppings);
         }
     }
-
-
 
     @Override
     public String toString() {
@@ -84,7 +81,8 @@ public class BLT extends Sandwich implements ToppingsManipulable{
         if (isHasCheese()) {
             sb.append("|- Cheese price: $").append(String.format("%.2f", getCheesePrice())).append("\n");
             if (isExtraCheese()) {
-                sb.append("|  - Extra Cheese Cost: $").append(String.format("%.2f", getExtraCheesePrice())).append("\n");
+                sb.append("|  - Extra Cheese Cost: $").append(String.format("%.2f", getExtraCheesePrice()))
+                        .append("\n");
             }
         }
 

@@ -1,4 +1,5 @@
 package com.pluralsight.utilitymethods;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,7 +25,6 @@ public class UtilityMethods {
         return value;
     }
 
-
     public static String takeYesOrNoInput(Scanner scanner, String value, String prompt) {
         while (!value.equalsIgnoreCase("Y") && !value.equalsIgnoreCase("N")) {
             System.out.println("Sorry, please enter either (Y/N): ");
@@ -35,15 +35,12 @@ public class UtilityMethods {
         return value;
     }
 
-
     public static String validateMeatChoice(Scanner scanner, List<String> meatOptions) {
         while (true) {
             System.out.println("Choose One Meat To add ");
             for (String meat : meatOptions) {
                 System.out.println("❥ " + meat);
             }
-
-
 
             System.out.print("Enter your choice: ");
             String selectedMeat = scanner.nextLine().trim();
@@ -57,7 +54,6 @@ public class UtilityMethods {
             System.out.println("Invalid meat choice. Please choose one of the available options.");
         }
     }
-
 
     public static String validateCheeseChoice(Scanner scanner, List<String> cheeseOptions) {
         while (true) {
@@ -78,7 +74,6 @@ public class UtilityMethods {
             System.out.println("Invalid Cheese choice. Please choose one of the available options.");
         }
     }
-
 
     public static String validateToppingsChoice(Scanner scanner, List<String> toppingOptions) {
         while (true) {
@@ -119,8 +114,6 @@ public class UtilityMethods {
         }
     }
 
-
-
     public static String validateChipChoice(Scanner scanner, List<String> chipChoices) {
         while (true) {
             System.out.println("\nChoose a bag of chips to add🥫");
@@ -143,7 +136,5 @@ public class UtilityMethods {
 
 }
 
-
-
-//reference for signs
-//https://www.compart.com/en/unicode
+// reference for signs
+// https://www.compart.com/en/unicode

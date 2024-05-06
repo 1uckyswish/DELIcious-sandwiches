@@ -3,7 +3,7 @@ package com.pluralsight.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich extends Order{
+public class Sandwich extends Order {
     private boolean toasted;
     private double sizePrice;
     private double meatPrice;
@@ -24,7 +24,7 @@ public class Sandwich extends Order{
         this.premiumToppings = new ArrayList<>();
     }
 
-    //For toasted
+    // For toasted
     public boolean isToasted() {
         return toasted;
     }
@@ -33,7 +33,7 @@ public class Sandwich extends Order{
         this.toasted = toasted;
     }
 
-    //For price
+    // For price
     public double getSizePrice() {
         return sizePrice;
     }
@@ -42,7 +42,7 @@ public class Sandwich extends Order{
         this.sizePrice = sizePrice;
     }
 
-    //For meats
+    // For meats
     public double getMeatPrice() {
         return meatPrice;
     }
@@ -51,7 +51,7 @@ public class Sandwich extends Order{
         this.meatPrice = meatPrice;
     }
 
-    //For cheese
+    // For cheese
     public double getCheesePrice() {
         return cheesePrice;
     }
@@ -60,7 +60,7 @@ public class Sandwich extends Order{
         this.cheesePrice = cheesePrice;
     }
 
-    //Check for extra meat
+    // Check for extra meat
     public boolean isExtraMeat() {
         return extraMeat;
     }
@@ -69,7 +69,7 @@ public class Sandwich extends Order{
         this.extraMeat = extraMeat;
     }
 
-    //Return and set Extra meat
+    // Return and set Extra meat
     public double getExtraMeatPrice() {
         return extraMeatPrice;
     }
@@ -78,12 +78,12 @@ public class Sandwich extends Order{
         this.extraMeatPrice = extraMeatPrice;
     }
 
-    //Check for cheese
+    // Check for cheese
     public boolean isExtraCheese() {
         return extraCheese;
     }
 
-    //Return and set Extra cheese
+    // Return and set Extra cheese
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
@@ -96,45 +96,47 @@ public class Sandwich extends Order{
         this.extraCheesePrice = extraCheesePrice;
     }
 
-    //Check for extra meat
+    // Check for extra meat
     public boolean isHasMeat() {
         return hasMeat;
     }
 
-    //update if meat wanted
+    // update if meat wanted
     public void setHasMeat(boolean hasMeat) {
         this.hasMeat = hasMeat;
     }
 
-    //check if cheese is wanted
+    // check if cheese is wanted
     public boolean isHasCheese() {
         return hasCheese;
     }
-    //Update cheese
+
+    // Update cheese
     public void setHasCheese(boolean hasCheese) {
         this.hasCheese = hasCheese;
     }
 
-    //Get all regular toppings
+    // Get all regular toppings
     public List<String> getRegularToppings() {
         return regularToppings;
     }
 
-    //Set the toppings
+    // Set the toppings
     public void setRegularToppings(List<String> regularToppings) {
         this.regularToppings = regularToppings;
     }
 
-    //Return all premium toppings
+    // Return all premium toppings
     public List<String> getPremiumToppings() {
         return premiumToppings;
     }
-    //Set the premium toppings
+
+    // Set the premium toppings
     public void setPremiumToppings(List<String> premiumToppings) {
         this.premiumToppings = premiumToppings;
     }
 
-    // Method to add  topping
+    // Method to add topping
     public void addRegularTopping(String topping) {
         regularToppings.add(topping);
     }
@@ -212,6 +214,5 @@ public class Sandwich extends Order{
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
-
 
 }

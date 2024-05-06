@@ -12,12 +12,11 @@ public class CreateChip {
     private Scanner scanner;
     private List<String> chipChoices = chipInventory();
 
-
-    public CreateChip(Scanner scanner){
+    public CreateChip(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public Chip createChips(){
+    public Chip createChips() {
         Chip chip;
         String chipType;
 
@@ -31,12 +30,10 @@ public class CreateChip {
         System.out.println("       🥔  Chips Added  🥔");
         System.out.println("  🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔🥔");
 
-
         return chip;
     }
 
-
-    private List<String> chipInventory(){
+    private List<String> chipInventory() {
         List<String> chipChoices = new ArrayList<>();
         chipChoices.add("SunChips");
         chipChoices.add("Doritos");

@@ -26,7 +26,6 @@ public class OrderScreen {
         totalPrice = 0.00;
     }
 
-
     public boolean run() {
         while (true) {
             System.out.println("\n+--------------------------------------+");
@@ -37,7 +36,7 @@ public class OrderScreen {
             System.out.println("| 3️⃣ - Would you like Chips🥫?         |");
             System.out.println("| 4️⃣ - Checkout💰                      |");
             System.out.println("| 5️⃣ - Exit👋🏻                          |");
-//            System.out.println("+--------------------------------------+");
+            // System.out.println("+--------------------------------------+");
             System.out.print("\nEnter your choice: ");
 
             String orderChoice = scanner.nextLine().trim().toLowerCase();
@@ -70,14 +69,14 @@ public class OrderScreen {
         }
     }
 
-    private void userSandwichInterface(){
+    private void userSandwichInterface() {
         System.out.println("\nWhich sandwich would you like to order?");
         System.out.println("+----------------------------------+");
         System.out.println("| 1️⃣ - Custom Sandwich🥪?          |");
         System.out.println("| 2️⃣ - Signature Sandwich🥪?       |");
         System.out.print("\nEnter your choice: ");
         String userChoice = scanner.nextLine().trim();
-        switch (userChoice){
+        switch (userChoice) {
             case "1":
                 addCustomSandwich();
                 break;
@@ -117,7 +116,8 @@ public class OrderScreen {
             }
         }
 
-        String modifyChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to modify the sandwich? (Y/N): ");
+        String modifyChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(),
+                "Would you like to modify the sandwich? (Y/N): ");
         Sandwich sandwich;
 
         if (modifyChoice.equalsIgnoreCase("Y")) {
@@ -147,8 +147,9 @@ public class OrderScreen {
         }
 
         System.out.print("Would you like a side of 4oz Au Jus Sauce🍲? (Y/N): ");
-        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like a side of 4oz Au Jus Sauce🍲? (Y/N): ");
-        if (sideChoice.equalsIgnoreCase("Y")){
+        String sideChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(),
+                "Would you like a side of 4oz Au Jus Sauce🍲? (Y/N): ");
+        if (sideChoice.equalsIgnoreCase("Y")) {
             sandwich.addRegularTopping("4oz Au Jus sauce");
         }
 
@@ -159,17 +160,15 @@ public class OrderScreen {
         sandwichCart.add(sandwich);
     }
 
-
-
     private void addCustomSandwich() {
-            // Create an instance of CreateSandwich class
-            CreateSandwich sandwichCreator = new CreateSandwich(scanner);
+        // Create an instance of CreateSandwich class
+        CreateSandwich sandwichCreator = new CreateSandwich(scanner);
 
-            // Call createSandwich method to create a sandwich
-            Sandwich newSandwich = sandwichCreator.createSandwich();
-            // Add the created sandwich to sandwichCart
+        // Call createSandwich method to create a sandwich
+        Sandwich newSandwich = sandwichCreator.createSandwich();
+        // Add the created sandwich to sandwichCart
         System.out.println("\n~~ Custom sandwich successfully added! ~~");
-            sandwichCart.add(newSandwich);
+        sandwichCart.add(newSandwich);
 
     }
 
@@ -201,7 +200,7 @@ public class OrderScreen {
         double sandwichTotal = 0.00;
         System.out.println("~~ Sandwiches ~~");
         if (!sandwichCart.isEmpty()) {
-            for (Sandwich sandwich : sandwichCart){
+            for (Sandwich sandwich : sandwichCart) {
                 if (sandwich instanceof BLT) {
                     sandwichTotal += ((BLT) sandwich).getPrice();
                 } else {
@@ -216,7 +215,7 @@ public class OrderScreen {
         double drinkTotal = 0.00;
         System.out.println("~~ Drinks ~~");
         if (!drinkCart.isEmpty()) {
-            for (Drink drink : drinkCart){
+            for (Drink drink : drinkCart) {
                 drinkTotal += drink.getPrice();
                 System.out.println(drink);
             }
@@ -227,7 +226,7 @@ public class OrderScreen {
         double chipTotal = 0.00;
         System.out.println("~~ Chips ~~");
         if (!chipCart.isEmpty()) {
-            for (Chip chip : chipCart){
+            for (Chip chip : chipCart) {
                 chipTotal += chip.getPrice();
                 System.out.println(chip);
             }
@@ -244,7 +243,7 @@ public class OrderScreen {
         System.out.println("3️⃣ Continue shopping");
         System.out.print("Enter your choice (1, 2, 3): ");
         String userChoice = scanner.nextLine().trim();
-        switch (userChoice){
+        switch (userChoice) {
             case "1" -> {
                 createReceipt();
                 System.out.println("\nThank you for choosing DELI-CIOUS Sandwiches!");
@@ -259,27 +258,28 @@ public class OrderScreen {
                 run();
                 break;
             }
-            default ->   System.out.println("Invalid choice. Please enter again.");
+            default -> System.out.println("Invalid choice. Please enter again.");
         }
     }
 
-    private void createReceipt(){
+    private void createReceipt() {
         // Get the current date
         Date currentDate = new Date();
         // Define the desired date format
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
         // Format the current date
         String formattedDate = dateFormat.format(currentDate);
-        String filePath = "/Users/butterflycoupe/Desktop/YearUp/DELIcious-sandwiches/DELIcious-sandwiches/DELIcious-sandwiches/Receipts/" + formattedDate + ".txt";
+        String filePath = "/Users/butterflycoupe/Desktop/YearUp/DELIcious-sandwiches/DELIcious-sandwiches/DELIcious-sandwiches/Receipts/"
+                + formattedDate + ".txt";
 
-        try{
+        try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
             writer.write("======================================\n");
             writer.write("              SANDWICHES              \n");
             writer.write("======================================\n");
             writer.newLine();
             if (!sandwichCart.isEmpty()) {
-                for (Sandwich sandwich : sandwichCart){
+                for (Sandwich sandwich : sandwichCart) {
                     writer.write(String.valueOf(sandwich));
                     writer.newLine();
                 }
@@ -292,8 +292,8 @@ public class OrderScreen {
             writer.write("                DRINKS                \n");
             writer.write("======================================\n");
             writer.newLine();
-            if(!drinkCart.isEmpty()){
-                for (Drink drink : drinkCart){
+            if (!drinkCart.isEmpty()) {
+                for (Drink drink : drinkCart) {
                     writer.write(String.valueOf(drink));
                     writer.newLine();
                 }
@@ -302,22 +302,20 @@ public class OrderScreen {
                 writer.newLine();
             }
 
-
             writer.write("\n======================================\n");
             writer.write("                CHIPS                 \n");
             writer.write("======================================\n");
             writer.newLine();
 
-            if(!chipCart.isEmpty()){
-                for (Chip chip : chipCart){
+            if (!chipCart.isEmpty()) {
+                for (Chip chip : chipCart) {
                     writer.write(String.valueOf(chip));
                     writer.newLine();
                 }
-            }else {
+            } else {
                 writer.write("No Chips Ordered\n");
                 writer.newLine();
             }
-
 
             // Total Price
             // Total Price
@@ -329,7 +327,6 @@ public class OrderScreen {
             writer.write("\n==============================================\n");
             writer.write(paddingStr + totalPriceLine + paddingStr + "\n");
             writer.write("==============================================\n");
-
 
             // Ending
             writer.write("==============================================\n");
@@ -350,14 +347,13 @@ public class OrderScreen {
             writer.flush();
             writer.close();
             clearCart();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-
     }
 
-    public void clearCart(){
+    public void clearCart() {
         sandwichCart.clear();
         drinkCart.clear();
         chipCart.clear();
@@ -373,7 +369,7 @@ public class OrderScreen {
                 if (userChoice.equalsIgnoreCase("yes")) {
                     return;
                 } else if (userChoice.equalsIgnoreCase("no")) {
-                        run();
+                    run();
                     return;
                 } else {
                     System.out.println("Invalid choice. Please enter 'Yes' or 'No'.");
@@ -381,6 +377,5 @@ public class OrderScreen {
             }
         }
     }
-
 
 }

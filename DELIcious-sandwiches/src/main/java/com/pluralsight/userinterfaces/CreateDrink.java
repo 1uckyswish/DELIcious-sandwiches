@@ -11,11 +11,11 @@ public class CreateDrink {
     private static Scanner scanner;
     private List<String> drinkChoices = beverageChoices();
 
-    public CreateDrink(Scanner scanner){
+    public CreateDrink(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public Drink createDrink(){
+    public Drink createDrink() {
         Drink drink;
         String drinkSize;
         String drinkType;
@@ -30,7 +30,8 @@ public class CreateDrink {
         System.out.println("2️⃣ Medium");
         System.out.println("3️⃣ Large");
         System.out.print("Enter your choice (1, 2, 3): ");
-        String sizeChoice = UtilityMethods.takeSizeInput(scanner, scanner.nextLine().trim(), "\nEnter your choice (1, 2, 3): ");
+        String sizeChoice = UtilityMethods.takeSizeInput(scanner, scanner.nextLine().trim(),
+                "\nEnter your choice (1, 2, 3): ");
         drinkSize = (sizeChoice.equals("1") ? "Small" : sizeChoice.equals("2") ? "Medium" : "Large");
         drinkPrice = (drinkSize.equals("Small") ? 2.00 : drinkSize.equals("Medium") ? 2.50 : 3.00);
         drinkType = UtilityMethods.validateBeverageChoice(scanner, drinkChoices);
@@ -43,9 +44,7 @@ public class CreateDrink {
         return drink;
     }
 
-
-
-    private List<String> beverageChoices(){
+    private List<String> beverageChoices() {
         List<String> beverageChoices = new ArrayList<>();
         beverageChoices.add("Milkshake");
         beverageChoices.add("Iced Coffee");
