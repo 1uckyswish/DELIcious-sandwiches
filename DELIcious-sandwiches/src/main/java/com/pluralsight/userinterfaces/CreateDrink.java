@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class CreateDrink {
     private static Scanner scanner;
-    private List<String> drinkChoices = beverageChoices();
+    private final List<String> drinkChoices = beverageChoices();
 
     public CreateDrink(Scanner scanner) {
-        this.scanner = scanner;
+        CreateDrink.scanner = scanner;
     }
 
     public Drink createDrink() {

@@ -1,7 +1,6 @@
 package com.pluralsight.userinterfaces;
 
 import com.pluralsight.models.Chip;
-import com.pluralsight.models.Drink;
 import com.pluralsight.utilitymethods.UtilityMethods;
 
 import java.util.ArrayList;
@@ -9,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CreateChip {
-    private Scanner scanner;
-    private List<String> chipChoices = chipInventory();
+    private final Scanner scanner;
+    private final List<String> chipChoices = chipInventory();
 
     public CreateChip(Scanner scanner) {
         this.scanner = scanner;
