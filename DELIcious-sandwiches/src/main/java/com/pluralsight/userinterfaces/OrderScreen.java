@@ -6,18 +6,17 @@ import com.pluralsight.utilitymethods.UtilityMethods;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class OrderScreen {
-    private List<Sandwich> sandwichCart;
-    private List<Drink> drinkCart;
-    private List<Chip> chipCart;
+    private final List<Sandwich> sandwichCart;
+    private final List<Drink> drinkCart;
+    private final List<Chip> chipCart;
     private double totalPrice;
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public OrderScreen() {
         this.sandwichCart = new ArrayList<>();
@@ -26,7 +25,7 @@ public class OrderScreen {
         totalPrice = 0.00;
     }
 
-    public boolean run() {
+    public void run() {
         while (true) {
             System.out.println("\n+--------------------------------------+");
             System.out.println("|             ORDER SCREEN             |");
@@ -62,7 +61,7 @@ public class OrderScreen {
                 case "5":
                     exitBackHome();
                     System.out.println("\nExiting...\n");
-                    return false; // Exit the method and indicate that the user chose to exit
+                    return; // Exit the method and indicate that the user chose to exit
                 default:
                     System.out.println("Invalid choice. Please enter again.");
             }
@@ -202,7 +201,7 @@ public class OrderScreen {
         if (!sandwichCart.isEmpty()) {
             for (Sandwich sandwich : sandwichCart) {
                 if (sandwich instanceof BLT) {
-                    sandwichTotal += ((BLT) sandwich).getPrice();
+                    sandwichTotal += sandwich.getPrice();
                 } else {
                     sandwichTotal += sandwich.calculateTotalPrice();
                 }
@@ -248,16 +247,9 @@ public class OrderScreen {
                 createReceipt();
                 System.out.println("\nThank you for choosing DELI-CIOUS Sandwiches!");
                 System.out.println("\nWe appreciate your business.");
-                return;
             }
-            case "2" -> {
-                clearCart();
-                return;
-            }
-            case "3" -> {
-                run();
-                break;
-            }
+            case "2" -> clearCart();
+            case "3" -> run();
             default -> System.out.println("Invalid choice. Please enter again.");
         }
     }
@@ -318,7 +310,6 @@ public class OrderScreen {
             }
 
             // Total Price
-            // Total Price
             String totalPriceLine = String.format("Total Price: $%.2f", totalPrice);
             int totalLength = totalPriceLine.length();
             int padding = (42 - totalLength) / 2; // Assuming the total line length is 42 characters
@@ -360,7 +351,7 @@ public class OrderScreen {
     }
 
     private void exitBackHome() {
-        if (sandwichCart.size() > 0 || drinkCart.size() > 0 || chipCart.size() > 0) {
+        if (!sandwichCart.isEmpty() || !drinkCart.isEmpty() || !chipCart.isEmpty()) {
             while (true) {
                 System.out.println("\nBefore proceeding, would you like to confirm your choices?");
                 System.out.println("Please note that this action will clear all items from your cart.");
