@@ -1,5 +1,8 @@
 package com.pluralsight.userinterfaces;
+import com.pluralsight.models.BLT;
+import com.pluralsight.models.Philly;
 import com.pluralsight.models.Sandwich;
+import com.pluralsight.models.ToppingsManipulable;
 import com.pluralsight.utilitymethods.UtilityMethods;
 
 import java.util.ArrayList;
@@ -70,6 +73,280 @@ public class CreateSandwich {
         return sandwich;
 
     }
+
+
+
+    public BLT customSignatureSandwich(){
+        BLT currentBLT = new BLT();
+        System.out.println("\n======================================");
+        System.out.println("|       Customizing BLT Sandwich     |");
+        System.out.println("======================================\n");
+
+        System.out.print("Would you like to change bread type? (Y/N):");
+        String userBreadChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to change bread type? (Y/N):");
+
+        if (userBreadChoice.equalsIgnoreCase("Y")) {
+            System.out.println("Select your bread type🍞");
+            System.out.println("1️⃣ - White");
+            System.out.println("2️⃣ - Wheat");
+            System.out.println("3️⃣ - Rye");
+            System.out.println("4️⃣ - Wrap");
+            System.out.print("Enter your choice (1, 2, 3, 4): ");
+            String breadChoice = UtilityMethods.takeBreadTypeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3, 4): ");
+            currentBLT.setType(breadChoice.equals("1") ? "White" : breadChoice.equals("2") ? "Wheat" : breadChoice.equals("3") ? "Rye" : "Wrap");
+        }
+
+        System.out.print("Would you like to change Sandwich size? (Y/N):");
+        String userSizeChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to change Sandwich size? (Y/N):");
+        if(userSizeChoice.equalsIgnoreCase("Y")){
+            System.out.println("\nWhat size sandwich would you like?");
+            System.out.println("1️⃣ - 4-inch");
+            System.out.println("2️⃣ - 8-inch");
+            System.out.println("3️⃣ - 12-inch");
+            System.out.print("Enter your choice (1, 2, 3): ");
+            String sizeChoice = UtilityMethods.takeSizeInput(scanner, scanner.nextLine().trim(), "Enter your choice (1, 2, 3): ");
+            currentBLT.setSize((sizeChoice.equals("1") ? "4" : sizeChoice.equals("2") ? "8" : "12"));
+            currentBLT.setSizePrice((currentBLT.getSize().equals("4") ? 5.50 : currentBLT.getSize().equals("8") ? 7.00 : 8.50));
+        }
+
+
+
+        System.out.println("Would you like to keep the sandwich Toasted? (Y/N):");
+        String userToastChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to keep the sandwich Toasted? (Y/N):");
+        if (userToastChoice.equalsIgnoreCase("N")){
+            currentBLT.setToasted(false);
+        }
+
+        setSignatureMeatToppingsAndBooleanValue(currentBLT);
+        setSignatureCheeseToppingsAndBooleanValue(currentBLT);
+
+
+
+        return currentBLT;
+    }
+
+
+    private void setSignatureMeatToppingsAndBooleanValue(ToppingsManipulable sandwich) {
+        Sandwich sandwichInstance = null;
+
+        if (sandwich instanceof BLT) {
+            sandwichInstance = (BLT) sandwich;
+        } else if (sandwich instanceof Philly) {
+            sandwichInstance = (Philly) sandwich;
+        } else {
+            // Handle the case when sandwich is neither BLT nor Philly
+        }
+
+        List<String> selectedMeats = new ArrayList<>();
+        boolean addMoreMeat = false; // Initialize addMoreMeat
+        boolean meatSelected = false; // Track if meat is selected
+
+        System.out.print("Would you like to remove any of the current meat topping? (Y/N): ");
+        String userRemoveMeatToppingChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to remove any of the current topping? (Y/N): ");
+        if(userRemoveMeatToppingChoice.equalsIgnoreCase("Y")){
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).removePremiumTopping("Bacon");
+                ((BLT) sandwichInstance).setHasMeat(false);
+                ((BLT) sandwichInstance).setMeatPrice(0.00);
+                System.out.println("Bacon Removed");
+            } else if (sandwichInstance instanceof Philly) {
+                // Assuming Philly has a method to remove the meat topping
+//                ((Philly) sandwichInstance).removePremiumTopping("Steak");
+//                ((Philly) sandwichInstance).setHasMeat(false);
+//                ((Philly) sandwichInstance).setMeatPrice(0.00);
+                System.out.println("Steak Removed");
+            }
+        }
+
+
+        System.out.print("\nWould you like meat in your sandwich🍖? (Y/N): ");
+        String meatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like meat in your sandwich🍖? (Y/N): ");
+
+        if (meatChoice.equalsIgnoreCase("Y")) {
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).setHasMeat(true);
+                ((BLT) sandwichInstance).setMeatPrice(((BLT) sandwichInstance).getSize().equals("4") ? 1.00 : ((BLT) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
+                meatSelected = true;
+            } else if (sandwichInstance instanceof Philly) {
+                // Handle setting meat properties for Philly sandwich (if needed)
+            }
+
+            // Loop for selecting meat
+            do {
+                String selectedMeat = UtilityMethods.validateMeatChoice(scanner, meatToppings);
+                selectedMeats.add(selectedMeat);
+
+                System.out.print("\nWould you like more meat on your sandwich🥩? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more meat on your sandwich🥩? (Y/N): ");
+                addMoreMeat = repeatChoice.equalsIgnoreCase("Y");
+
+                // Set extra meat flag based on user choice
+                if (addMoreMeat) {
+                    if (sandwichInstance instanceof BLT) {
+                        ((BLT) sandwichInstance).setExtraMeat(true);
+                    } else if (sandwichInstance instanceof Philly) {
+                        // Handle setting extra meat for Philly sandwich (if needed)
+                    }
+                } else {
+                    if (sandwichInstance instanceof BLT) {
+                        ((BLT) sandwichInstance).setExtraMeat(false);
+                    } else if (sandwichInstance instanceof Philly) {
+                        // Handle setting extra meat for Philly sandwich (if needed)
+                    }
+                }
+
+            } while (addMoreMeat); // Continue looping if user wants more meat
+        }
+
+// Add selected meats to the sandwich if meat is selected
+        if (meatSelected) {
+            for (String meat : selectedMeats) {
+                if (sandwichInstance instanceof BLT) {
+                    ((BLT) sandwichInstance).addPremiumTopping(meat);
+                } else if (sandwichInstance instanceof Philly) {
+                    // Handle adding meat to PHILLY sandwich (if needed)
+                }
+            }
+        }
+
+
+        // Calculate total cost of extra meat
+        int extraMeatCount = selectedMeats.size() - 1; // Exclude the first meat, which is included in the base price
+        double extraMeatCost = 0.0;
+        switch (sandwichInstance.getSize()) {
+            case "4":
+                extraMeatCost = 0.50 * extraMeatCount;
+                break;
+            case "8":
+                extraMeatCost = 1.00 * extraMeatCount;
+                break;
+            case "12":
+                extraMeatCost = 1.50 * extraMeatCount;
+                break;
+            default:
+                break;
+        }
+
+        if(selectedMeats.size() > 1){
+            sandwichInstance.setExtraMeat(true);
+        }
+// Update the total cost of the sandwich
+        sandwichInstance.setExtraMeatPrice(extraMeatCost);
+
+
+    }
+
+
+    private void setSignatureCheeseToppingsAndBooleanValue(ToppingsManipulable sandwich) {
+        Sandwich sandwichInstance = null;
+
+        if (sandwich instanceof BLT) {
+            sandwichInstance = (BLT) sandwich;
+        } else if (sandwich instanceof Philly) {
+            sandwichInstance = (Philly) sandwich;
+        } else {
+            // Handle the case when sandwich is neither BLT nor Philly
+        }
+
+        List<String> selectedCheeses = new ArrayList<>();
+        boolean addMoreCheese = false; // Initialize addMoreMeat
+        boolean cheeseSelected = false; // Track if meat is selected
+
+        System.out.print("Would you like to remove any of the current cheese topping? (Y/N): ");
+        String userRemoveMeatToppingChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like to remove any of the current cheese topping? (Y/N): ");
+        if(userRemoveMeatToppingChoice.equalsIgnoreCase("Y")){
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).removePremiumTopping("Cheddar");
+                ((BLT) sandwichInstance).setHasCheese(false);
+                ((BLT) sandwichInstance).setCheesePrice(0.00);
+                System.out.println("Cheddar Cheese Removed");
+            } else if (sandwichInstance instanceof Philly) {
+                // Assuming Philly has a method to remove the meat topping
+//                ((Philly) sandwichInstance).removePremiumTopping("Steak");
+//                ((Philly) sandwichInstance).setHasMeat(false);
+//                ((Philly) sandwichInstance).setMeatPrice(0.00);
+                System.out.println("Steak Removed");
+            }
+        }
+
+
+        System.out.print("\nWould you like Cheese in your sandwich🧀? (Y/N): ");
+        String meatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "\nWould you like Cheese in your sandwich🧀? (Y/N): ");
+
+        if (meatChoice.equalsIgnoreCase("Y")) {
+            if (sandwichInstance instanceof BLT) {
+                ((BLT) sandwichInstance).setHasCheese(true);
+                ((BLT) sandwichInstance).setCheesePrice(((BLT) sandwichInstance).getSize().equals("4") ? 1.00 : ((BLT) sandwichInstance).getSize().equals("8") ? 2.00 : 3.00);
+                cheeseSelected = true;
+            } else if (sandwichInstance instanceof Philly) {
+                // Handle setting meat properties for Philly sandwich (if needed)
+            }
+
+            // Loop for selecting meat
+            do {
+                String selectedCheese = UtilityMethods.validateCheeseChoice(scanner, cheeseToppings);
+                selectedCheeses.add(selectedCheese);
+
+                System.out.print("\nWould you like more Cheese on your sandwich🧀? (Y/N): ");
+                String repeatChoice = UtilityMethods.takeYesOrNoInput(scanner, scanner.nextLine().trim(), "Would you like more Cheese on your sandwich🧀? (Y/N): ");
+                addMoreCheese = repeatChoice.equalsIgnoreCase("Y");
+
+                // Set extra meat flag based on user choice
+                if (addMoreCheese) {
+                    if (sandwichInstance instanceof BLT) {
+                        ((BLT) sandwichInstance).setExtraCheese(true);
+                    } else if (sandwichInstance instanceof Philly) {
+                        // Handle setting extra meat for Philly sandwich (if needed)
+                    }
+                } else {
+                    if (sandwichInstance instanceof BLT) {
+                        ((BLT) sandwichInstance).setExtraCheese(false);
+                    } else if (sandwichInstance instanceof Philly) {
+                        // Handle setting extra meat for Philly sandwich (if needed)
+                    }
+                }
+
+            } while (addMoreCheese); // Continue looping if user wants more meat
+        }
+
+// Add selected meats to the sandwich if meat is selected
+        if (cheeseSelected) {
+            for (String cheese : selectedCheeses) {
+                if (sandwichInstance instanceof BLT) {
+                    ((BLT) sandwichInstance).addPremiumTopping(cheese);
+                } else if (sandwichInstance instanceof Philly) {
+                    // Handle adding meat to PHILLY sandwich (if needed)
+                }
+            }
+        }
+
+
+        // Calculate total cost of extra meat
+        int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first meat, which is included in the base price
+        double extraCheeseCost = 0.0;
+        switch (sandwichInstance.getSize()) {
+            case "4":
+                extraCheeseCost = 0.30 * extraCheeseCount;
+                break;
+            case "8":
+                extraCheeseCost = 0.60 * extraCheeseCount;
+                break;
+            case "12":
+                extraCheeseCost = 0.90 * extraCheeseCount;
+                break;
+            default:
+                break;
+        }
+
+        if(selectedCheeses.size() > 1){
+            sandwichInstance.setExtraCheese(true);
+        }
+
+        // Update the total cost of the sandwich
+        sandwichInstance.setExtraCheesePrice(extraCheeseCost);
+    }
+
+
 
 
     private void setMeatToppingsAndBooleanValue(Sandwich sandwich) {
@@ -256,7 +533,6 @@ public class CreateSandwich {
             }
         }
     }
-
 
 
     private List<String> loadMeatToppings() {

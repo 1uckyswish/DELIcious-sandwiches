@@ -1,5 +1,6 @@
 package com.pluralsight.userinterfaces;
 
+import com.pluralsight.models.BLT;
 import com.pluralsight.models.Chip;
 import com.pluralsight.models.Drink;
 import com.pluralsight.models.Sandwich;
@@ -46,7 +47,7 @@ public class OrderScreen {
 
             switch (orderChoice) {
                 case "1":
-                    addSandwich();
+                    userSandwichInterface();
                     break;
                 case "2":
                     addDrink();
@@ -72,14 +73,42 @@ public class OrderScreen {
         }
     }
 
-    private void addSandwich() {
-        // Create an instance of CreateSandwich class
-        CreateSandwich sandwichCreator = new CreateSandwich(scanner);
+    private void userSandwichInterface(){
+        System.out.println("\nWhich sandwich would you like to order?");
+        System.out.println("+----------------------------------+");
+        System.out.println("| 1️⃣ - Custom Sandwich🥪?          |");
+        System.out.println("| 2️⃣ - Signature Sandwich🥪?       |");
+        System.out.print("\nEnter your choice: ");
+        String userChoice = scanner.nextLine().trim();
+        switch (userChoice){
+            case "1":
+                addCustomSandwich();
+                break;
+            case "2":
+                addSignatureSandwich();
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter again.");
+        }
+    }
 
-        // Call createSandwich method to create a sandwich
-        Sandwich newSandwich = sandwichCreator.createSandwich();
-        // Add the created sandwich to sandwichCart
-        sandwichCart.add(newSandwich);
+    private void addSignatureSandwich(){
+        BLT myblt = new BLT();
+        CreateSandwich sandwichCreator = new CreateSandwich(scanner);
+        BLT blt = sandwichCreator.customSignatureSandwich();
+        sandwichCart.add(blt);
+    }
+
+
+    private void addCustomSandwich() {
+            // Create an instance of CreateSandwich class
+            CreateSandwich sandwichCreator = new CreateSandwich(scanner);
+
+            // Call createSandwich method to create a sandwich
+            Sandwich newSandwich = sandwichCreator.createSandwich();
+            // Add the created sandwich to sandwichCart
+            sandwichCart.add(newSandwich);
+
     }
 
     private void addDrink() {
@@ -104,9 +133,17 @@ public class OrderScreen {
         System.out.println("~~ Sandwiches ~~");
         double sandwichTotal = 0.00;
         for (Sandwich sandwich : sandwichCart){
-            sandwichTotal += sandwich.calculateTotalPrice();
+            // Check if the sandwich is a BLT
+            if (sandwich instanceof BLT) {
+                // For BLT sandwiches, calculate the total price using the BLT's overridden method
+                sandwichTotal += ((BLT) sandwich).getPrice();
+            } else {
+                // For other sandwiches, calculate the total price using the Sandwich class method
+                sandwichTotal += sandwich.calculateTotalPrice();
+            }
             System.out.println(sandwich);
         }
+
 
         double drinkTotal = 0.00;
         System.out.println("~~ Drinks ~~");
