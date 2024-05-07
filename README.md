@@ -33,6 +33,11 @@ To streamline the ordering process, we've created several Signature Sandwiches t
 Customers can modify these Signature Sandwiches by adding or removing toppings to suit their taste.
 
 ## Screens
+
+### Main Class (Home)
+
+This is the heart of our Accounting Ledger Application project. The Main class manages all store functionalities. Check out the Maven Java folder structure on the left to see how the project is organized.
+
 ### Home Screen
 - Provides options to start a new order or exit the application.
 
