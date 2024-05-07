@@ -36,36 +36,73 @@ Customers can modify these Signature Sandwiches by adding or removing toppings t
 
 ### Main Class (Home)
 
-This is the heart of our Accounting Ledger Application project. The Main class manages all store functionalities. Check out the Maven Java folder structure on the left to see how the project is organized.
+Welcome to our Delicious Sandwiches project! This is the heart of our sandwich ordering application. The Main class orchestrates all the functionalities, allowing customers to customize their sandwiches and add delicious sides. Check out the project structure to see how everything is organized.
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 41 05 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/35d30fbb-7ec2-4f41-b262-b165a17c0fac">
 
 ### Home Screen
 - Provides options to start a new order or exit the application.
 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 42 47 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/af777028-61c8-4b8b-b9e3-71ea439ee1de">
+
 ### Order Screen
-- Displays all entries with the newest entries first.
 - Options include adding a sandwich, drink, chips, cookie, proceeding to checkout, or canceling the order.
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 43 39 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/c4eba7fa-0f1a-4ff5-803d-e960306447ce">
 
 ### Add Sandwich Screen
 - Guides the user through selecting bread type, sandwich size, toppings (with the option to add extras), meats, cheeses, sauces, and toasting preference.
 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 44 37 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/6563c61e-0fdb-422e-b70e-85d5d80f8e9b">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 45 34 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/68ce9a53-adfe-47a3-ba45-27105504be96">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 46 36 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/f404c46e-b2cc-4973-b804-69d97c7b21d6">
+
 ### Add Drink Screen
 - Allows the user to select the drink size and flavor.
+- 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 47 12 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/b099398f-ca11-425d-a618-1648121589f4">
 
 ### Add Chips Screen
 - Enables the user to select the type of chips they'd like to add to their order.
 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 47 43 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/bdb18dd8-dca8-427f-b55e-459a5e6e20ac">
+
 ### Add Cookie Screen
 - Allows the user to choose between a sugar cookie or chocolate chip cookie to add to their order.
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 48 22 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/26958ddd-65c7-45c9-8e4c-20e17bb78a5f">
 
 ### Checkout Screen
 - Displays the order details including sandwich customizations, drink selection, chip type, cookie choice, and total cost.
 - Offers the option to confirm the order and return to the home screen.
 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 49 00 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/0ffb43b7-4463-4f91-98fa-54a9bdeabdff">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 49 06 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/fec3bdf1-b2dd-4a8e-8e9b-d81edf639e5d">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 49 47 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/a8b1d8c7-2543-4fa8-98fc-a2f1cd4cf449">
+
+
 ## Saving Orders
 - Each order is saved to a file named by the date and time it was placed (e.g., YYYYMMdd-hhmmss.txt).
 
+<img width="1440" alt="Screenshot 2024-05-06 at 8 50 49 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/1b396f36-655f-4ef1-bcde-9fa6d14e48cb">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 51 15 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/c6cb2ace-4d78-4ccc-b805-679d50d747e6">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 51 21 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/cf8ddc6c-8e6b-404d-91dd-83ed7ed5f635">
+
 ## Object Oriented Analysis and Design
 - The application utilizes Object-Oriented Programming concepts extensively to ensure modularity, scalability, and maintainability.
+<img width="1440" alt="Screenshot 2024-05-06 at 8 51 58 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/5fc9c51e-8f82-47c2-b354-596ed7ad3931">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 52 05 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/1d8041a5-9950-428a-8b4a-25e7c45fa4bd">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 52 15 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/546ea51d-d2ab-4212-9d7c-f2eb571e9111">
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 53 06 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/da351acb-253e-46c5-a1fd-f2d7db3312c3">
 
 ## Repository Contents
 - Class diagram depicting the object relationships and interactions.
