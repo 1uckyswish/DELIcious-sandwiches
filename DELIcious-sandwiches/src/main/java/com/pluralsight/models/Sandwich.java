@@ -1,3 +1,8 @@
+/**
+ * Represents a sandwich order, extending the base Order class.
+ * This class includes methods and properties for managing sandwich details such as size, type, toppings, and prices.
+ */
+
 package com.pluralsight.models;
 
 import java.util.ArrayList;
@@ -17,12 +22,19 @@ public class Sandwich extends Order {
     private List<String> regularToppings;
     private List<String> premiumToppings;
 
+    /**
+     * Constructs a Sandwich object with the specified size, type, and toasting preference.
+     * @param size The size of the sandwich.
+     * @param type The type of bread for the sandwich.
+     * @param toasted Whether the sandwich should be toasted or not.
+     */
     public Sandwich(String size, String type, boolean toasted) {
         super(size, type);
         this.toasted = toasted;
         this.regularToppings = new ArrayList<>();
         this.premiumToppings = new ArrayList<>();
     }
+    // Getters and setters for various properties...
 
     // For toasted
     public boolean isToasted() {
@@ -146,6 +158,11 @@ public class Sandwich extends Order {
         premiumToppings.add(topping);
     }
 
+    /**
+     * Calculates the total price of the sandwich, including base price, meat and cheese prices,
+     * and additional costs for extra meat and cheese.
+     * @return The total price of the sandwich.
+     */
     public double calculateTotalPrice() {
         double totalPrice = sizePrice + meatPrice + cheesePrice;
         if (extraMeat) {
@@ -156,7 +173,10 @@ public class Sandwich extends Order {
         }
         return totalPrice;
     }
-
+    /**
+     * Overrides the toString method to provide a formatted string representation of the Sandwich object.
+     * @return A string representation of the Sandwich object.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -208,6 +228,7 @@ public class Sandwich extends Order {
         return sb.toString();
     }
 
+    // Private helper method to capitalize the first letter of a string...
     private String capitalizeFirstLetter(String str) {
         if (str == null || str.isEmpty()) {
             return str;

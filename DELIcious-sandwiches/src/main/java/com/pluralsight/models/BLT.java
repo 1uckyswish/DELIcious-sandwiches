@@ -1,3 +1,7 @@
+/**
+ * Represents a BLT (Bacon, Lettuce, Tomato) sandwich order, extending the functionality of the Sandwich class.
+ * It initializes a BLT sandwich with default values and provides methods to manipulate toppings.
+ */
 package com.pluralsight.models;
 
 import java.util.ArrayList;
@@ -6,6 +10,9 @@ import java.util.List;
 
 public class BLT extends Sandwich implements ToppingsManipulate {
 
+    /**
+     * Constructs a BLT sandwich order with default values and predefined toppings.
+     */
     public BLT() {
         super("8", "White", true); // Call the constructor of the parent class with default values
         setSizePrice(7.00);
@@ -28,6 +35,10 @@ public class BLT extends Sandwich implements ToppingsManipulate {
         this.setPremiumToppings(premiumToppings);
     }
 
+    /**
+     * Removes a regular topping from the BLT sandwich.
+     * @param topping The topping to be removed.
+     */
     public void removeRegularTopping(String topping) {
         List<String> regularToppings = new ArrayList<>(getRegularToppings());
         if (regularToppings.contains(topping)) {
@@ -36,6 +47,10 @@ public class BLT extends Sandwich implements ToppingsManipulate {
         }
     }
 
+    /**
+     * Removes a premium topping from the BLT sandwich.
+     * @param topping The topping to be removed.
+     */
     public void removePremiumTopping(String topping) {
         List<String> premiumToppings = new ArrayList<>(getPremiumToppings());
         if (premiumToppings.contains(topping)) {
@@ -44,6 +59,10 @@ public class BLT extends Sandwich implements ToppingsManipulate {
         }
     }
 
+    /**
+     * Overrides the toString method to provide a string representation of the BLT sandwich order.
+     * @return A string representation of the BLT sandwich order.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,6 +115,11 @@ public class BLT extends Sandwich implements ToppingsManipulate {
         return sb.toString();
     }
 
+    /**
+     * Capitalizes the first letter of a string.
+     * @param str The string to capitalize.
+     * @return The string with the first letter capitalized.
+     */
     private String capitalizeFirstLetter(String str) {
         if (str == null || str.isEmpty()) {
             return str;

@@ -1,3 +1,7 @@
+/**
+ * Represents a signature Philly sandwich order, extending the Sandwich class and implementing the ToppingsManipulate interface.
+ * This class provides specific configurations and operations for creating a Philly sandwich order.
+ */
 package com.pluralsight.models;
 
 import java.util.ArrayList;
@@ -6,6 +10,11 @@ import java.util.List;
 
 public class Philly extends Sandwich implements ToppingsManipulate {
 
+    /**
+     * Constructs a Philly sandwich object with default values for size, bread type, and toasting preference,
+     * and sets specific prices for meat, cheese, and overall sandwich.
+     * Initializes regular and premium toppings for the Philly sandwich.
+     */
     public Philly() {
         super("8", "White", true); // Call the constructor of the parent class with default values
         setSizePrice(7.00);
@@ -28,6 +37,10 @@ public class Philly extends Sandwich implements ToppingsManipulate {
         this.setPremiumToppings(premiumToppings);
     }
 
+    /**
+     * Removes a specified regular topping from the Philly sandwich.
+     * @param topping The regular topping to be removed.
+     */
     public void removeRegularTopping(String topping) {
         List<String> regularToppings = new ArrayList<>(getRegularToppings());
         if (regularToppings.contains(topping)) {
@@ -36,6 +49,10 @@ public class Philly extends Sandwich implements ToppingsManipulate {
         }
     }
 
+    /**
+     * Removes a specified premium topping from the Philly sandwich.
+     * @param topping The premium topping to be removed.
+     */
     public void removePremiumTopping(String topping) {
         List<String> premiumToppings = new ArrayList<>(getPremiumToppings());
         if (premiumToppings.contains(topping)) {
@@ -44,6 +61,10 @@ public class Philly extends Sandwich implements ToppingsManipulate {
         }
     }
 
+    /**
+     * Overrides the toString method to provide a formatted string representation of the Philly sandwich object.
+     * @return A string representation of the Philly sandwich object.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,6 +117,7 @@ public class Philly extends Sandwich implements ToppingsManipulate {
         return sb.toString();
     }
 
+    // Private helper method to capitalize the first letter of a string
     private String capitalizeFirstLetter(String str) {
         if (str == null || str.isEmpty()) {
             return str;
