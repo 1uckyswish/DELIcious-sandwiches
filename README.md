@@ -104,6 +104,15 @@ Welcome to our Delicious Sandwiches project! This is the heart of our sandwich o
 
 <img width="1440" alt="Screenshot 2024-05-06 at 8 53 06 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/da351acb-253e-46c5-a1fd-f2d7db3312c3">
 
+## Interesting Section of code
+This code snippet introduces a unique feature where the user is informed that going back to the home screen will reset their cart. To implement this functionality, every time the Main class is instantiated, the cart object is created anew, ensuring that any previous cart contents are discarded. This prevents unintended persistence of items in the cart across sessions.
+
+By providing a message to the user, they are informed of the consequence of proceeding, enabling them to make an informed decision. This design choice ensures a seamless user experience while maintaining the integrity of the ordering process.
+
+<img width="1440" alt="Screenshot 2024-05-06 at 8 54 59 PM" src="https://github.com/1uckyswish/DELIcious-sandwiches/assets/107442415/f4f27db0-d6d9-4d61-8070-10dd27ee2db7">
+
+
+
 ## Repository Contents
 - Class diagram depicting the object relationships and interactions.
 - Source code files implementing the application logic.
