@@ -17,6 +17,7 @@ public class CreateDrink {
 
     /**
      * Constructs a CreateDrink object with the provided scanner.
+     *
      * @param scanner The scanner object used for user input.
      */
     public CreateDrink(Scanner scanner) {
@@ -25,6 +26,7 @@ public class CreateDrink {
 
     /**
      * Creates a drink object based on user input.
+     *
      * @return The created drink object.
      */
     public Drink createDrink() {
@@ -64,6 +66,7 @@ public class CreateDrink {
 
     /**
      * Loads the list of available beverage choices.
+     *
      * @return A list of available beverage choices.
      */
     private List<String> beverageChoices() {

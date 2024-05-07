@@ -9,7 +9,8 @@ public class Chip extends Order {
 
     /**
      * Constructs a Chip object with the specified type and chip inclusion status.
-     * @param type The type or variant of the chips.
+     *
+     * @param type     The type or variant of the chips.
      * @param hasChips Indicates whether chips are included in the order.
      */
     public Chip(String type, boolean hasChips) {
@@ -20,6 +21,7 @@ public class Chip extends Order {
 
     /**
      * Checks whether chips are included in the order.
+     *
      * @return true if chips are included; otherwise, false.
      */
     public boolean isHasChips() {
@@ -28,6 +30,7 @@ public class Chip extends Order {
 
     /**
      * Sets whether chips are included in the order.
+     *
      * @param hasChips true if chips are included; otherwise, false.
      */
     public void setHasChips(boolean hasChips) {
@@ -36,6 +39,7 @@ public class Chip extends Order {
 
     /**
      * Retrieves the price of the chips.
+     *
      * @return The price of the chips.
      */
     @Override
@@ -44,7 +48,9 @@ public class Chip extends Order {
     }
 
     /**
-     * Overrides the toString method to provide a string representation of the chip order.
+     * Overrides the toString method to provide a string representation of the chip
+     * order.
+     *
      * @return A string representation of the chip order.
      */
     @Override
@@ -60,6 +66,7 @@ public class Chip extends Order {
 
     /**
      * Capitalizes the first letter of a string.
+     *
      * @param str The string to capitalize.
      * @return The string with the first letter capitalized.
      */

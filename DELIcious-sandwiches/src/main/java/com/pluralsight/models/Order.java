@@ -11,6 +11,7 @@ public class Order {
 
     /**
      * Constructs an Order object with the specified size and type.
+     *
      * @param size The size of the ordered item.
      * @param type The type or variant of the ordered item.
      */
@@ -21,6 +22,7 @@ public class Order {
 
     /**
      * Retrieves the size of the ordered item.
+     *
      * @return The size of the ordered item.
      */
     public String getSize() {
@@ -29,6 +31,7 @@ public class Order {
 
     /**
      * Sets the size of the ordered item.
+     *
      * @param size The size of the ordered item.
      */
     public void setSize(String size) {
@@ -37,6 +40,7 @@ public class Order {
 
     /**
      * Retrieves the type or variant of the ordered item.
+     *
      * @return The type or variant of the ordered item.
      */
     public String getType() {
@@ -45,6 +49,7 @@ public class Order {
 
     /**
      * Sets the type or variant of the ordered item.
+     *
      * @param type The type or variant of the ordered item.
      */
     public void setType(String type) {
@@ -53,6 +58,7 @@ public class Order {
 
     /**
      * Retrieves the price of the ordered item.
+     *
      * @return The price of the ordered item.
      */
     public double getPrice() {
@@ -61,6 +67,7 @@ public class Order {
 
     /**
      * Sets the price of the ordered item.
+     *
      * @param price The price of the ordered item.
      */
     public void setPrice(double price) {

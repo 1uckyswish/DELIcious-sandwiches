@@ -7,7 +7,7 @@ public class Cookie extends Order {
      * Constructs a Cookie object with the specified type, size, price.
      */
     public Cookie() {
-        //By default, set it to Chocolate Chip
+        // By default, set it to Chocolate Chip
         super("Medium", "Chocolate Chip"); // Set the size and type for cookies
         this.hasCookie = true; // Chocolate chips are included by default
         this.price = 1.25; // Set the default price for cookies
@@ -15,6 +15,7 @@ public class Cookie extends Order {
 
     /**
      * Checks whether a cookie is included in the cookie.
+     *
      * @return true if a cookie is included; otherwise, false.
      */
     public boolean hasCookie() {
@@ -23,6 +24,7 @@ public class Cookie extends Order {
 
     /**
      * Sets whether a cookie is included in the cookie.
+     *
      * @param hasCookie true if a cookie is included; otherwise, false.
      */
     public void setChocolateChips(boolean hasCookie) {
@@ -31,6 +33,7 @@ public class Cookie extends Order {
 
     /**
      * Retrieves the price of the cookie.
+     *
      * @return The price of the cookie.
      */
     @Override
@@ -39,7 +42,9 @@ public class Cookie extends Order {
     }
 
     /**
-     * Overrides the toString method to provide a string representation of the cookie order.
+     * Overrides the toString method to provide a string representation of the
+     * cookie order.
+     *
      * @return A string representation of the cookie order.
      */
     @Override
@@ -55,6 +60,7 @@ public class Cookie extends Order {
 
     /**
      * Capitalizes the first letter of a string.
+     *
      * @param str The string to capitalize.
      * @return The string with the first letter capitalized.
      */

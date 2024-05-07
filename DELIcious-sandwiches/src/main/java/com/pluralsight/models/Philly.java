@@ -11,7 +11,8 @@ import java.util.List;
 public class Philly extends Sandwich implements ToppingsManipulate {
 
     /**
-     * Constructs a Philly sandwich object with default values for size, bread type, and toasting preference,
+     * Constructs a Philly sandwich object with default values for size, bread type,
+     * and toasting preference,
      * and sets specific prices for meat, cheese, and overall sandwich.
      * Initializes regular and premium toppings for the Philly sandwich.
      */
@@ -39,6 +40,7 @@ public class Philly extends Sandwich implements ToppingsManipulate {
 
     /**
      * Removes a specified regular topping from the Philly sandwich.
+     *
      * @param topping The regular topping to be removed.
      */
     public void removeRegularTopping(String topping) {
@@ -51,6 +53,7 @@ public class Philly extends Sandwich implements ToppingsManipulate {
 
     /**
      * Removes a specified premium topping from the Philly sandwich.
+     *
      * @param topping The premium topping to be removed.
      */
     public void removePremiumTopping(String topping) {
@@ -62,7 +65,9 @@ public class Philly extends Sandwich implements ToppingsManipulate {
     }
 
     /**
-     * Overrides the toString method to provide a formatted string representation of the Philly sandwich object.
+     * Overrides the toString method to provide a formatted string representation of
+     * the Philly sandwich object.
+     *
      * @return A string representation of the Philly sandwich object.
      */
     @Override

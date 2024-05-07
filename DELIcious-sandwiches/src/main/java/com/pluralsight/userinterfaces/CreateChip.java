@@ -17,6 +17,7 @@ public class CreateChip {
 
     /**
      * Constructs a CreateChip object with the provided scanner.
+     *
      * @param scanner The scanner object used for user input.
      */
     public CreateChip(Scanner scanner) {
@@ -25,6 +26,7 @@ public class CreateChip {
 
     /**
      * Creates a chip object based on user input.
+     *
      * @return The created chip object.
      */
     public Chip createChips() {
@@ -51,6 +53,7 @@ public class CreateChip {
 
     /**
      * Loads the list of available chip choices.
+     *
      * @return A list of available chip choices.
      */
     private List<String> chipInventory() {

@@ -37,6 +37,7 @@ public class BLT extends Sandwich implements ToppingsManipulate {
 
     /**
      * Removes a regular topping from the BLT sandwich.
+     *
      * @param topping The topping to be removed.
      */
     public void removeRegularTopping(String topping) {
@@ -49,6 +50,7 @@ public class BLT extends Sandwich implements ToppingsManipulate {
 
     /**
      * Removes a premium topping from the BLT sandwich.
+     *
      * @param topping The topping to be removed.
      */
     public void removePremiumTopping(String topping) {
@@ -60,7 +62,9 @@ public class BLT extends Sandwich implements ToppingsManipulate {
     }
 
     /**
-     * Overrides the toString method to provide a string representation of the BLT sandwich order.
+     * Overrides the toString method to provide a string representation of the BLT
+     * sandwich order.
+     *
      * @return A string representation of the BLT sandwich order.
      */
     @Override
@@ -117,6 +121,7 @@ public class BLT extends Sandwich implements ToppingsManipulate {
 
     /**
      * Capitalizes the first letter of a string.
+     *
      * @param str The string to capitalize.
      * @return The string with the first letter capitalized.
      */

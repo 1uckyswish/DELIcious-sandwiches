@@ -8,10 +8,12 @@ public class Drink extends Order {
     private boolean hasDrink; // Indicates whether a drink is included in the order
 
     /**
-     * Constructs a Drink object with the specified size, type, drink inclusion status, and size price.
-     * @param size The size of the drink.
-     * @param type The type or variant of the drink.
-     * @param hasDrink Indicates whether a drink is included in the order.
+     * Constructs a Drink object with the specified size, type, drink inclusion
+     * status, and size price.
+     *
+     * @param size      The size of the drink.
+     * @param type      The type or variant of the drink.
+     * @param hasDrink  Indicates whether a drink is included in the order.
      * @param sizePrice The price of the drink based on its size.
      */
     public Drink(String size, String type, boolean hasDrink, double sizePrice) {
@@ -22,6 +24,7 @@ public class Drink extends Order {
 
     /**
      * Checks whether a drink is included in the order.
+     *
      * @return true if a drink is included; otherwise, false.
      */
     public boolean isHasDrink() {
@@ -30,6 +33,7 @@ public class Drink extends Order {
 
     /**
      * Sets whether a drink is included in the order.
+     *
      * @param hasDrink true if a drink is included; otherwise, false.
      */
     public void setHasDrink(boolean hasDrink) {
@@ -38,6 +42,7 @@ public class Drink extends Order {
 
     /**
      * Retrieves the price of the drink.
+     *
      * @return The price of the drink.
      */
     @Override
@@ -46,7 +51,9 @@ public class Drink extends Order {
     }
 
     /**
-     * Overrides the toString method to provide a string representation of the drink order.
+     * Overrides the toString method to provide a string representation of the drink
+     * order.
+     *
      * @return A string representation of the drink order.
      */
     @Override
@@ -62,6 +69,7 @@ public class Drink extends Order {
 
     /**
      * Capitalizes the first letter of a string.
+     *
      * @param str The string to capitalize.
      * @return The string with the first letter capitalized.
      */

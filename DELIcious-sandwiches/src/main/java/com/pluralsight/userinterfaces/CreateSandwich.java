@@ -11,8 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * The CreateSandwich class facilitates the creation of custom sandwiches by providing
- * a user interface for selecting various sandwich options such as bread type, size, toppings, etc.
+ * The CreateSandwich class facilitates the creation of custom sandwiches by
+ * providing
+ * a user interface for selecting various sandwich options such as bread type,
+ * size, toppings, etc.
  */
 public class CreateSandwich {
     private static Scanner scanner;
@@ -23,6 +25,7 @@ public class CreateSandwich {
 
     /**
      * Constructor for the CreateSandwich class.
+     *
      * @param scanner Scanner object to read user input.
      */
     public CreateSandwich(Scanner scanner) {
@@ -31,6 +34,7 @@ public class CreateSandwich {
 
     /**
      * Method to create a new custom sandwich based on user input.
+     *
      * @return The created sandwich object.
      */
     public Sandwich createSandwich() {
@@ -104,7 +108,9 @@ public class CreateSandwich {
 
     /**
      * Creates a customized signature sandwich based on the provided signature type.
-     * @param signature The type of signature sandwich to create (e.g., "BLT", "Philly").
+     *
+     * @param signature The type of signature sandwich to create (e.g., "BLT",
+     *                  "Philly").
      * @return The customized signature sandwich instance.
      */
     public Sandwich customSignatureSandwich(String signature) {
@@ -191,6 +197,7 @@ public class CreateSandwich {
 
     /**
      * Sets the sauce toppings for the signature sandwich.
+     *
      * @param sandwich The signature sandwich instance to customize.
      */
     private void setSignatureSauceToppings(ToppingsManipulate sandwich) {
@@ -253,6 +260,7 @@ public class CreateSandwich {
 
     /**
      * Sets the regular toppings for the signature sandwich.
+     *
      * @param sandwich The signature sandwich instance to customize.
      */
     private void setSignatureRegularToppings(ToppingsManipulate sandwich) {
@@ -315,9 +323,10 @@ public class CreateSandwich {
         }
     }
 
-
     /**
-     * Sets the premium meat toppings for the signature sandwich and updates boolean values accordingly.
+     * Sets the premium meat toppings for the signature sandwich and updates boolean
+     * values accordingly.
+     *
      * @param sandwich The signature sandwich instance to customize.
      */
     private void setSignatureMeatToppingsAndBooleanValue(ToppingsManipulate sandwich) {
@@ -418,7 +427,9 @@ public class CreateSandwich {
     }
 
     /**
-     * Sets the premium cheese toppings for the signature sandwich and updates boolean values accordingly.
+     * Sets the premium cheese toppings for the signature sandwich and updates
+     * boolean values accordingly.
+     *
      * @param sandwich The signature sandwich instance to customize.
      */
     private void setSignatureCheeseToppingsAndBooleanValue(ToppingsManipulate sandwich) {
@@ -491,7 +502,8 @@ public class CreateSandwich {
         }
 
         // Calculate the total cost of extra cheese toppings
-        int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first cheese, which is included in the base price
+        int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first cheese, which is included in the base
+        // price
         double extraCheeseCost = 0.0;
         if (sandwichInstance != null) {
             switch (sandwichInstance.getSize()) {
@@ -519,7 +531,9 @@ public class CreateSandwich {
     }
 
     /**
-     * Sets the meat toppings and updates boolean values accordingly for the given sandwich.
+     * Sets the meat toppings and updates boolean values accordingly for the given
+     * sandwich.
+     *
      * @param sandwich The sandwich instance to customize with meat toppings.
      */
     private void setMeatToppingsAndBooleanValue(Sandwich sandwich) {
@@ -561,7 +575,8 @@ public class CreateSandwich {
                 }
 
                 // Calculate the total cost of extra meat toppings
-                int extraMeatCount = selectedMeats.size() - 1; // Exclude the first meat, which is included in the base price
+                int extraMeatCount = selectedMeats.size() - 1; // Exclude the first meat, which is included in the base
+                // price
                 double extraMeatCost = 0.0;
                 switch (sandwich.getSize()) {
                     case "4":
@@ -587,7 +602,9 @@ public class CreateSandwich {
     }
 
     /**
-     * Sets the cheese toppings and updates boolean values accordingly for the given sandwich.
+     * Sets the cheese toppings and updates boolean values accordingly for the given
+     * sandwich.
+     *
      * @param sandwich The sandwich instance to customize with cheese toppings.
      */
     private void setCheeseToppingsAndBooleanValue(Sandwich sandwich) {
@@ -603,7 +620,8 @@ public class CreateSandwich {
         if (cheeseChoice.equalsIgnoreCase("Y")) {
             // Set cheese-related boolean values and calculate the initial cheese price
             sandwich.setHasCheese(true);
-            sandwich.setCheesePrice(sandwich.getSize().equals("4") ? 0.75 : sandwich.getSize().equals("8") ? 1.50 : 2.25);
+            sandwich.setCheesePrice(
+                    sandwich.getSize().equals("4") ? 0.75 : sandwich.getSize().equals("8") ? 1.50 : 2.25);
             cheeseSelected = true;
 
             // Loop for selecting cheese toppings
@@ -626,7 +644,8 @@ public class CreateSandwich {
                 }
 
                 // Calculate the total cost of extra cheese toppings
-                int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first cheese, which is included in the base price
+                int extraCheeseCount = selectedCheeses.size() - 1; // Exclude the first cheese, which is included in the
+                // base price
                 double extraCheeseCost = 0.0;
                 switch (sandwich.getSize()) {
                     case "4":
@@ -652,7 +671,9 @@ public class CreateSandwich {
     }
 
     /**
-     * Sets the regular (vegetable) toppings for the given sandwich based on user input.
+     * Sets the regular (vegetable) toppings for the given sandwich based on user
+     * input.
+     *
      * @param sandwich The sandwich instance to customize with regular toppings.
      */
     private void setRegularToppings(Sandwich sandwich) {
@@ -692,6 +713,7 @@ public class CreateSandwich {
 
     /**
      * Sets the sauce toppings for the given sandwich based on user input.
+     *
      * @param sandwich The sandwich instance to customize with sauce toppings.
      */
     private void setSaucesToppings(Sandwich sandwich) {
@@ -731,6 +753,7 @@ public class CreateSandwich {
 
     /**
      * Loads a list of meat toppings available for sandwiches.
+     *
      * @return A list of meat toppings.
      */
     private List<String> loadMeatToppings() {
@@ -747,6 +770,7 @@ public class CreateSandwich {
 
     /**
      * Loads a list of cheese toppings available for sandwiches.
+     *
      * @return A list of cheese toppings.
      */
     private List<String> loadCheeseToppings() {
@@ -761,6 +785,7 @@ public class CreateSandwich {
 
     /**
      * Loads a list of regular toppings available for sandwiches.
+     *
      * @return A list of regular toppings.
      */
     private List<String> loadRegularToppings() {
@@ -780,6 +805,7 @@ public class CreateSandwich {
 
     /**
      * Loads a list of sauce toppings available for sandwiches.
+     *
      * @return A list of sauce toppings.
      */
     private List<String> loadSauceToppings() {
@@ -793,6 +819,5 @@ public class CreateSandwich {
         sauceToppings.add("Mayo");
         return sauceToppings;
     }
-
 
 }

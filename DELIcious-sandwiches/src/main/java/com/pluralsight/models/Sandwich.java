@@ -23,9 +23,11 @@ public class Sandwich extends Order {
     private List<String> premiumToppings;
 
     /**
-     * Constructs a Sandwich object with the specified size, type, and toasting preference.
-     * @param size The size of the sandwich.
-     * @param type The type of bread for the sandwich.
+     * Constructs a Sandwich object with the specified size, type, and toasting
+     * preference.
+     *
+     * @param size    The size of the sandwich.
+     * @param type    The type of bread for the sandwich.
      * @param toasted Whether the sandwich should be toasted or not.
      */
     public Sandwich(String size, String type, boolean toasted) {
@@ -159,8 +161,10 @@ public class Sandwich extends Order {
     }
 
     /**
-     * Calculates the total price of the sandwich, including base price, meat and cheese prices,
+     * Calculates the total price of the sandwich, including base price, meat and
+     * cheese prices,
      * and additional costs for extra meat and cheese.
+     *
      * @return The total price of the sandwich.
      */
     public double calculateTotalPrice() {
@@ -173,8 +177,11 @@ public class Sandwich extends Order {
         }
         return totalPrice;
     }
+
     /**
-     * Overrides the toString method to provide a formatted string representation of the Sandwich object.
+     * Overrides the toString method to provide a formatted string representation of
+     * the Sandwich object.
+     *
      * @return A string representation of the Sandwich object.
      */
     @Override

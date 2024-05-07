@@ -12,17 +12,18 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * This class represents the user interface for placing orders in a sandwich shop application.
+ * This class represents the user interface for placing orders in a sandwich
+ * shop application.
  * It handles user interactions, such as selecting items to order,
  * viewing the cart, and checking out.
  */
 public class OrderScreen {
     // Attributes for the order screen
     private final List<Sandwich> sandwichCart; // Holds ordered sandwiches
-    private final List<Drink> drinkCart;       // Holds ordered drinks
-    private final List<Chip> chipCart;         // Holds ordered chips
-    private final List<Cookie> cookieCart;         // Holds ordered chips
-    private double totalPrice;                  // Total price of the order
+    private final List<Drink> drinkCart; // Holds ordered drinks
+    private final List<Chip> chipCart; // Holds ordered chips
+    private final List<Cookie> cookieCart; // Holds ordered chips
+    private double totalPrice; // Total price of the order
     private static final Scanner scanner = new Scanner(System.in); // Scanner for user input
 
     /**
@@ -90,7 +91,8 @@ public class OrderScreen {
 
     /**
      * Adds a new cookie to the cart.
-     * Automatically creates a Cookie object with default values and adds it to the cart.
+     * Automatically creates a Cookie object with default values and adds it to the
+     * cart.
      */
     public void addCookieToCart() {
         System.out.println("\nChoose the type of cookie:");
@@ -120,7 +122,6 @@ public class OrderScreen {
         System.out.println("\n 🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪");
         System.out.println("      🍪 Cookie Added! 🍪");
         System.out.println(" 🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪");
-
 
     }
 
@@ -215,9 +216,9 @@ public class OrderScreen {
         sandwichCart.add(sandwich); // Add the created sandwich to the cart
     }
 
-
     /**
-     * Method allows the user to create a custom sandwich with no starter base. they select all options
+     * Method allows the user to create a custom sandwich with no starter base. they
+     * select all options
      */
     private void addCustomSandwich() {
         // Create an instance of CreateSandwich class
@@ -226,7 +227,6 @@ public class OrderScreen {
         // Call createSandwich method to create a sandwich
         Sandwich newSandwich = sandwichCreator.createSandwich();
         // Add the created sandwich to sandwichCart
-        System.out.println("\n~~ Custom sandwich successfully added! ~~");
         sandwichCart.add(newSandwich);
 
     }
@@ -237,7 +237,7 @@ public class OrderScreen {
     private void addDrink() {
         // Implement drink creation logic
         CreateDrink drinkCreator = new CreateDrink(scanner);
-        //Call the method to create a beverage
+        // Call the method to create a beverage
         Drink newDrink = drinkCreator.createDrink();
         // Add the created drink to drinkCart
         drinkCart.add(newDrink);
@@ -249,7 +249,7 @@ public class OrderScreen {
     private void addChips() {
         // Implement chip creation logic
         CreateChip chipCreator = new CreateChip(scanner);
-        //Call the method to create a bag of chips
+        // Call the method to create a bag of chips
         Chip newChip = chipCreator.createChips();
         // Add the created chips to chipCart
         chipCart.add(newChip);
@@ -264,19 +264,19 @@ public class OrderScreen {
         System.out.println("|          Order Overview            |");
         System.out.println("======================================\n");
 
-        //Check if the cart is empty for all items
-        //Return to order screen until items are ordered
+        // Check if the cart is empty for all items
+        // Return to order screen until items are ordered
         if (sandwichCart.isEmpty() && drinkCart.isEmpty() && chipCart.isEmpty() && cookieCart.isEmpty()) {
             System.out.println("Your cart is empty. Please add items to proceed with checkout.");
             return;
         }
 
-        //Collect data from sandwiches cart
-        //gather total of all sandwiches in cart
+        // Collect data from sandwiches cart
+        // gather total of all sandwiches in cart
         double sandwichTotal = 0.00;
         System.out.println("~~ Sandwiches ~~");
-        //Check if sandwich cart is not emptily
-        //Append the sandwich price to get the total for sandwich
+        // Check if sandwich cart is not emptily
+        // Append the sandwich price to get the total for sandwich
         if (!sandwichCart.isEmpty()) {
             for (Sandwich sandwich : sandwichCart) {
                 if (sandwich instanceof BLT) {
@@ -287,71 +287,71 @@ public class OrderScreen {
                 System.out.println(sandwich);
             }
         } else {
-            //Display message if no sandwich is ordered
+            // Display message if no sandwich is ordered
             System.out.println("No sandwiches in cart.\n");
         }
 
-        //Collect data from drink cart
-        //gather total of all drinks in cart
+        // Collect data from drink cart
+        // gather total of all drinks in cart
         double drinkTotal = 0.00;
         System.out.println("~~ Drinks ~~");
-        //Check if drink cart is not emptily
-        //Append the drink price to get the total for drinks
+        // Check if drink cart is not emptily
+        // Append the drink price to get the total for drinks
         if (!drinkCart.isEmpty()) {
             for (Drink drink : drinkCart) {
                 drinkTotal += drink.getPrice();
                 System.out.println(drink);
             }
         } else {
-            //Display message if no drinks are ordered
+            // Display message if no drinks are ordered
             System.out.println("No drinks in cart.\n");
         }
 
-        //Collect data from chips cart
-        //gather total of all chips in cart
+        // Collect data from chips cart
+        // gather total of all chips in cart
         double chipTotal = 0.00;
         System.out.println("~~ Chips ~~");
-        //Check if chips cart is not emptily
-        //Append the chips price to get the total for chips
+        // Check if chips cart is not emptily
+        // Append the chips price to get the total for chips
         if (!chipCart.isEmpty()) {
             for (Chip chip : chipCart) {
                 chipTotal += chip.getPrice();
                 System.out.println(chip);
             }
         } else {
-            //Display message if no chips are ordered
+            // Display message if no chips are ordered
             System.out.println("No chips in cart.\n");
         }
 
-        //Collect data from cookie cart
-        //gather total of all cookies in cart
+        // Collect data from cookie cart
+        // gather total of all cookies in cart
         double cookieTotal = 0.00;
         System.out.println("~~ Cookies ~~");
-        //Check if cookies cart is not emptily
-        //Append the cookies price to get the total for cookies
+        // Check if cookies cart is not emptily
+        // Append the cookies price to get the total for cookies
         if (!cookieCart.isEmpty()) {
             for (Cookie cookie : cookieCart) {
                 cookieTotal += cookie.getPrice();
                 System.out.println(cookie);
             }
         } else {
-            //Display message if no cookies are ordered
+            // Display message if no cookies are ordered
             System.out.println("No cookies in cart.\n");
         }
 
-        //Accumulate the total for everything
+        // Accumulate the total for everything
         totalPrice = sandwichTotal + drinkTotal + chipTotal + cookieTotal;
-        //Display total
+        // Display total
         System.out.printf("Total Price: $%,.2f\n", totalPrice);
 
-        //Display user new options to choose from
+        // Display user new options to choose from
         System.out.println("\nWhat would you like to do now?");
         System.out.println("1️⃣ Proceed to checkout");
         System.out.println("2️⃣ Cancel order");
         System.out.println("3️⃣ Continue shopping");
         System.out.print("Enter your choice (1, 2, 3): ");
         String userChoice = scanner.nextLine().trim();
-        //Handle user choice
+        // Handle user choice
         switch (userChoice) {
             case "1" -> {
                 createReceipt();
@@ -363,7 +363,7 @@ public class OrderScreen {
                 System.out.println("\nCart Cleared \n");
             }
             case "3" -> run();
-            //Display error message if inputted value is incorrect
+            // Display error message if inputted value is incorrect
             default -> System.out.println("Invalid choice. Please enter again.");
         }
     }
@@ -371,7 +371,8 @@ public class OrderScreen {
     /**
      * Creates a receipt text file containing the details of the current order.
      * The receipt includes the items ordered, their prices, and the total price.
-     * It also includes information about the store such as its name, address, manager, and contact details.
+     * It also includes information about the store such as its name, address,
+     * manager, and contact details.
      * The receipt file is saved with a timestamp in the file name.
      * After creating the receipt, it clears all items from the cart.
      */
@@ -437,7 +438,6 @@ public class OrderScreen {
                 writer.newLine();
             }
 
-
             // Write chip details
             writer.write("\n======================================\n");
             writer.write("               COOKIES                 \n");
@@ -453,9 +453,6 @@ public class OrderScreen {
                 writer.write("No Cookies Ordered\n");
                 writer.newLine();
             }
-
-
-
 
             // Write total price
             String totalPriceLine = String.format("Total Price: $%.2f", totalPrice);
@@ -493,7 +490,6 @@ public class OrderScreen {
 
     }
 
-
     /**
      * Clears all items from the carts.
      */
@@ -507,7 +503,8 @@ public class OrderScreen {
 
     /**
      * Checks if any items are present in the carts.
-     * If the carts are not empty, prompts the user to confirm their choices before exiting.
+     * If the carts are not empty, prompts the user to confirm their choices before
+     * exiting.
      * If confirmed, clears the carts and returns to the home screen.
      * If not confirmed, allows the user to continue shopping.
      */
@@ -532,6 +529,5 @@ public class OrderScreen {
             }
         }
     }
-
 
 }
