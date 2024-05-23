@@ -4,7 +4,7 @@
  */
 package com.pluralsight.models;
 
-public class Order {
+public abstract class Order {
     protected String size; // Size of the ordered item
     protected String type; // Type or variant of the ordered item
     protected double price; // Price of the ordered item
@@ -73,4 +73,13 @@ public class Order {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    /**
+     * Abstract method to provide a string representation of the order.
+     *
+     * @return A string representation of the order.
+     */
+    @Override
+    public abstract String toString();
+
 }
