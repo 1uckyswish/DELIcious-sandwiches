@@ -1,0 +1,62 @@
+======================================
+              SANDWICHES              
+======================================
+
+|+--------------------------------------+
+| Custom Sandwich
+|+--------------------------------------+
+|Bread Choice: Rye
+|Bread Size: 12 inch
+|Base Price: $8.50
+|Toasted: Yes
+|Regular Toppings:
+|- Pickles
+|- Mayo
+|Premium Toppings:
+|- Ham
+|- Swiss
+|Toppings cost:
+|- Meat price: $3.00
+|- Cheese price: $2.25
+|Sandwich Price: $13.75
+|+--------------------------------------+
+
+
+======================================
+                DRINKS                
+======================================
+
+No Drinks Ordered
+
+
+======================================
+                CHIPS                 
+======================================
+
+No Chips Ordered
+
+
+======================================
+               COOKIES                 
+======================================
+
+No Cookies Ordered
+
+
+==============================================
+           Total Price: $13.75           
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

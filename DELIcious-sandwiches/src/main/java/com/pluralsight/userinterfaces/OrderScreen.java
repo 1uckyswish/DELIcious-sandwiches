@@ -3,8 +3,11 @@ package com.pluralsight.userinterfaces;
 import com.pluralsight.models.*;
 import com.pluralsight.utilitymethods.UtilityMethods;
 
+import javax.sound.sampled.*;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -354,6 +357,7 @@ public class OrderScreen {
         // Handle user choice
         switch (userChoice) {
             case "1" -> {
+                playSound("/Users/butterflycoupe/Desktop/YearUp/DELIcious-sandwiches/DELIcious-sandwiches/DELIcious-sandwiches/sounds/cash.wav");
                 createReceipt();
                 System.out.println("\nThank you for choosing DELI-CIOUS Sandwiches!");
                 System.out.println("\nWe appreciate your business.");
@@ -527,6 +531,18 @@ public class OrderScreen {
                     System.out.println("Invalid choice. Please enter 'Yes' or 'No'.");
                 }
             }
+        }
+    }
+
+    public static void playSound(String filePath) {
+        try {
+            File file = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+            System.out.println("Error playing sound: " + e.getMessage());
         }
     }
 
