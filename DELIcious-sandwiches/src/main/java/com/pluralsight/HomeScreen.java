@@ -9,7 +9,7 @@ public class HomeScreen {
         // Create a scanner object to receive user input
         Scanner scanner = new Scanner(System.in);
 
-        // Display welcome message to the user
+        // Display a welcome message to the user
         System.out.println("------------------------------------------------------");
         System.out.println("\t\t\t\t\tWelcome to");
         System.out.println("\t\t\t🥪 DELI-CIOUS sandwiches 🥪");

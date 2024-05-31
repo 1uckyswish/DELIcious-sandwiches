@@ -1,0 +1,95 @@
+======================================
+              SANDWICHES              
+======================================
+
+|+--------------------------------------+
+| Custom Sandwich
+|+--------------------------------------+
+|Bread Choice: White
+|Bread Size: 4 inch
+|Base Price: $5.50
+|Toasted: Yes
+|Regular Toppings:
+|- Onions
+|- Thousand island
+|- Mayo
+|Premium Toppings:
+|- Ham
+|- Provolone
+|Toppings cost:
+|- Meat price: $1.00
+|- Cheese price: $0.75
+|Sides: 4oz Au Jus sauce
+|Sandwich Price: $7.25
+|+--------------------------------------+
+
+|+--------------------------------------+
+| Signature BLT Special
+|+--------------------------------------+
+|Bread Choice: White
+|Bread Size: 12 inch
+|Base Price: $8.50
+|Toasted: Yes
+|Regular Toppings:
+|- Lettuce
+|- Tomato
+|- Ranch
+|- Mayo
+|Premium Toppings:
+|- Cheddar
+|Toppings cost:
+|- Cheese price: $3.00
+|Sandwich Price: $11.50
+|+--------------------------------------+
+
+
+======================================
+                DRINKS                
+======================================
+
+|+--------------------------------------+
+|Drink Choice: Milkshake
+|Drink Size: Medium
+|Drink Price: $2.50
+|+--------------------------------------+
+
+
+======================================
+                CHIPS                 
+======================================
+
+|+--------------------------------------+
+|Chip Choice: Takis
+|Chip Size: Snack Size
+|Chip Price: $1.50
+|+--------------------------------------+
+
+
+======================================
+               COOKIES                 
+======================================
+
+|+--------------------------------------+
+|Cookie Type: Sugar Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+
+==============================================
+           Total Price: $24.00           
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

@@ -1,0 +1,90 @@
+======================================
+              SANDWICHES              
+======================================
+
+|+--------------------------------------+
+| Custom Sandwich
+|+--------------------------------------+
+|Bread Choice: Wrap
+|Bread Size: 12 inch
+|Base Price: $8.50
+|Toasted: Yes
+|Regular Toppings:
+|- Lettuce
+|- Pickles
+|- Mushrooms
+|- Mayo
+|- Ranch
+|- Ketchup
+|Premium Toppings:
+|- Salami
+|- Ham
+|- Swiss
+|- Swiss
+|- Cheddar
+|Toppings cost:
+|- Meat price: $3.00
+|  - Extra Meat Cost: $1.50
+|- Cheese price: $2.25
+|  - Extra Cheese Cost: $1.80
+|Sides: 4oz Au Jus sauce
+|Sandwich Price: $17.05
+|+--------------------------------------+
+
+
+======================================
+                DRINKS                
+======================================
+
+|+--------------------------------------+
+|Drink Choice: Fanta
+|Drink Size: Large
+|Drink Price: $3.00
+|+--------------------------------------+
+
+
+======================================
+                CHIPS                 
+======================================
+
+|+--------------------------------------+
+|Chip Choice: Pringles
+|Chip Size: Snack Size
+|Chip Price: $1.50
+|+--------------------------------------+
+
+
+======================================
+               COOKIES                 
+======================================
+
+|+--------------------------------------+
+|Cookie Type: Chocolate Chip Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+|+--------------------------------------+
+|Cookie Type: Sugar Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+
+==============================================
+           Total Price: $24.05           
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

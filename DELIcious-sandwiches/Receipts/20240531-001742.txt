@@ -1,0 +1,59 @@
+======================================
+              SANDWICHES              
+======================================
+
+No sandwiches Ordered
+
+
+======================================
+                DRINKS                
+======================================
+
+No Drinks Ordered
+
+
+======================================
+                CHIPS                 
+======================================
+
+|+--------------------------------------+
+|Chip Choice: Lays
+|Chip Size: Snack Size
+|Chip Price: $1.50
+|+--------------------------------------+
+
+
+======================================
+               COOKIES                 
+======================================
+
+|+--------------------------------------+
+|Cookie Type: Chocolate Chip Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+|+--------------------------------------+
+|Cookie Type: Chocolate Chip Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+
+==============================================
+            Total Price: $4.00            
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

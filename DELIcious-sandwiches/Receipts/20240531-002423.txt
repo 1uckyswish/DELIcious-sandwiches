@@ -1,0 +1,87 @@
+======================================
+              SANDWICHES              
+======================================
+
+|+--------------------------------------+
+| Signature BLT Special
+|+--------------------------------------+
+|Bread Choice: White
+|Bread Size: 8 inch
+|Base Price: $7.00
+|Toasted: Yes
+|Regular Toppings:
+|- Lettuce
+|- Tomato
+|- Ranch
+|Premium Toppings:
+|- Bacon
+|- Cheddar
+|Toppings cost:
+|- Meat price: $2.00
+|- Cheese price: $1.50
+|Sandwich Price: $10.50
+|+--------------------------------------+
+
+|+--------------------------------------+
+| Signature Philly Special
+|+--------------------------------------+
+|Bread Choice: White
+|Bread Size: 8 inch
+|Base Price: $7.00
+|Toasted: Yes
+|Regular Toppings:
+|- Peppers
+|- Mayo
+|Premium Toppings:
+|- Steak
+|- American
+|Toppings cost:
+|- Meat price: $2.00
+|- Cheese price: $1.50
+|Sides: 4oz Au Jus sauce
+|Sandwich Price: $10.50
+|+--------------------------------------+
+
+
+======================================
+                DRINKS                
+======================================
+
+No Drinks Ordered
+
+
+======================================
+                CHIPS                 
+======================================
+
+No Chips Ordered
+
+
+======================================
+               COOKIES                 
+======================================
+
+|+--------------------------------------+
+|Cookie Type: Sugar Cookie
+|Cookie Size: Medium
+|Cookie Price: $1.25
+|+--------------------------------------+
+
+
+==============================================
+           Total Price: $22.25           
+==============================================
+==============================================
+  Thank you for your order! Enjoy your meal!  
+==============================================
+Store Name:    DELI-CIOUS Sandwiches
+Address:       726 Java drive, Bronx, NY, 
+Manager:       James Gosling
+Established:   May 12, 1995
+Hours:         Monday - Saturday: 10:00 AM - 8:00 PM
+               Sunday: 11:00 AM - 6:00 PM
+Phone:         (800) 223-1711
+Website:       www.delicious-sandwiches.com
+
+Thank you for choosing DELI-CIOUS Sandwiches!
+We appreciate your business.

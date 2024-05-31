@@ -82,8 +82,18 @@ public class OrderScreen {
                     break;
                 case "6":
                     // Prompt user when exiting
-                    exitBackHome();
                     System.out.println("\nExiting...\n");
+                    System.out.println("***************************************************");
+                    System.out.println("*                                                 *");
+                    System.out.println("*               Thanks for visiting               *");
+                    System.out.println("*                                                 *");
+                    System.out.println("*            🥪 DELI-CIOUS sandwiches 🥪          *");
+                    System.out.println("*                                                 *");
+                    System.out.println("*     We hope to see you again soon. Farewell!    *");
+                    System.out.println("*                                                 *");
+                    System.out.println("***************************************************");
+
+                    System.exit(0);
                     return; // Exit the method and indicate that the user chose to exit
                 default:
                     // Display a message for invalid input
@@ -345,7 +355,9 @@ public class OrderScreen {
         // Accumulate the total for everything
         totalPrice = sandwichTotal + drinkTotal + chipTotal + cookieTotal;
         // Display total
+        System.out.print("=====================\n");
         System.out.printf("Total Price: $%,.2f\n", totalPrice);
+        System.out.print("=====================\n");
 
         // Display user new options to choose from
         System.out.println("\nWhat would you like to do now?");
